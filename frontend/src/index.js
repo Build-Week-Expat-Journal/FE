@@ -6,10 +6,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import GlobalStyles from './style/GlobalStyles';
 import theme from './style/theme';
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
+    <GlobalStyles />
     <Router>
       <App />
     </Router>
