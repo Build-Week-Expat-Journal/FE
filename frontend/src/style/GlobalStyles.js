@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components/macro';
+import { rem } from 'polished';
 
 const GlobalStyles = createGlobalStyle`
   html {
@@ -16,20 +17,29 @@ const GlobalStyles = createGlobalStyle`
     min-width: 0;
   }
   body {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #111;
+    font-size: ${props => props.theme.typography.fontSize};
+    line-height: ${props => props.theme.typography.lineHeight};
+    color: ${props => props.theme.colors.baseFont};
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Poppins', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
+    color: ${props => props.theme.colors.headingFont};
+    font-family: ${props => props.theme.fontFamily.heading};
+    font-weight: ${props => props.theme.typography.fontWeight.bold};
+    letter-spacing: 0.01em;
     margin: 0;
+  }
+  h1 {
+    color: ${props => props.theme.colors.h1Font};
+    font-size: ${rem(64)};
+  }
+  h2 {
+    font-size: ${rem(36)};
   }
   p {
     padding: 0;
