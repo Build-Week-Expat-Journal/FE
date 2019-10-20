@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import styled from 'styled-components/macro';
+import media from './style/mq';
+
+import { useAuth } from './context/AuthContext';
+
+const AppContainer = styled.div`
+  font-family: ${props => props.theme.fontFamily.base};
+  width: 100%;
+
+  ${media.md`
+    min-height: 100vh;
+  `}
+`;
 
 function App() {
+  const [state] = useAuth();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <Switch>
+        <Route exact path="/">
+          {!state.isAuthenticated ? <Redirect to="/login" /> : <h1>Home</h1>}
+        </Route>
+        <Route exact path="/login">
+          <h1>Login</h1>
+        </Route>
+      </Switch>
+    </AppContainer>
   );
 }
 
