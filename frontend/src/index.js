@@ -2,19 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import GlobalStyles from './style/GlobalStyles';
 import theme from './style/theme';
 
+import { AuthProvider } from './context/AuthContext';
+
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <GlobalStyles />
-    <Router>
-      <App />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <App />
+      </Router>
+    </AuthProvider>
   </ThemeProvider>,
   document.getElementById('root'),
 );
