@@ -6,8 +6,11 @@ import media from './style/mq';
 import { useAuth } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 
-import LoginForm from './components/LoginForm';
+import Login from './routes/Login';
+import RegisterMain from './components/RegisterMain'
+import Home from './components/Home';
 import CreateForm from './components/CreateForm';
+import UpdateForm from './components/UpdateForm';
 
 const AppContainer = styled.div`
   font-family: ${props => props.theme.fontFamily.base};
@@ -24,12 +27,16 @@ function App() {
     <AppContainer>
       <Switch>
         <Route exact path="/">
-          {!state.isAuthenticated ? <Redirect to="/login" /> : <h1>Home</h1>}
+          {!state.isAuthenticated ? <Redirect to="/login" /> : <Home />}
         </Route>
-        <Route exact path="/login" component={LoginForm} />
-        <Route exact path="/create" component={CreateForm} />
-        <Route exact path="/update/:id" /*component={UpdateForm}*/ />
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path='/register' component={RegisterMain} />
+        <PrivateRoute exact path="/create" component={CreateForm} />
+        <PrivateRoute exact path="/update/:id" component={UpdateForm} />
       </Switch>
+
     </AppContainer>
   );
 }
