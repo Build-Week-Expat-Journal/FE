@@ -5,6 +5,7 @@ import media from './style/mq';
 
 import { useAuth } from './context/AuthContext';
 
+
 const AppContainer = styled.div`
   font-family: ${props => props.theme.fontFamily.base};
   width: 100%;
