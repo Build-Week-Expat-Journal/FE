@@ -2,43 +2,86 @@ import React from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-
+import styled from 'styled-components';
 
 const RegisterMain = ({ values, errors, touched }) => {
+
+    // Styled Components 
+    const RegisterMain = styled.div`
+    border: 1px solid red;
+    display: flex;
+    justify-content: flex-end;
+    `
+
+    const RightSection = styled.div`
+    border: 1px solid blue;
+    color: white;
+    width: 40%;
+    background: linear-gradient(137.08deg, #230A11 -1.96%, #5D0D5F 97.8%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    `
+
+    const StyledForm = styled(Form)`
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    `
+
+    const TopContent = styled.div`
+    margin-bottom: 10%;
+    `
+
+    const StyledField = styled(Field)`
+    color: white;
+    font-size: 14px;
+    background: transparent;
+    padding: 4%;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    `
+
+
     return (
-        <div className='register-main'>
-            <div className='top-content'>
-                <h2>
-                    Become apart of a 25 million expat network, with members across the
-                    globe.
-                </h2>
-                <p>
-                    New Town? Constantly on the move? Friends are thousands of miles away? 
-                    Well, good thing is that you're not alone. <strong>Register down below </strong>
-                    to say what's up to nearby Expats! 
-                </p>
-            </div>
-            <Form validateOnBlur={false}>
-                <Field type='text' name='email' placeholder='Email' value={values.email}/>
-                    {touched.email && errors.email ? (
-                        <p>{errors.email}</p>
-                    ) : undefined}
-                <Field type='text' name='username' placeholder='Username' />
-                    {touched.username && errors.username && (<p>{errors.username}</p>)}
-                <Field type='text' name='password' placeholder='Password' />
-                    {touched.password && errors.password && (<p>{errors.password}</p>)}
-                <Field type='text' name='confirm' placeholder='Confirm Password' />
-                <label className='checkbox-container'>
-                I agree to all terms and conditions
-                <Field
-                    type='checkbox'
-                    name='terms'
-                    value={values.terms}
-                />
-                </label>
-                <button type='submit' className='register-button'>Register</button>
-            </Form>
-        </div>
+        <RegisterMain>
+            <RightSection>
+                <TopContent>
+                    <h2>
+                        Become apart of a 25 million expat network, with members across the
+                        globe.
+                    </h2>
+                    <p>
+                        New Town? Constantly on the move? Friends are thousands of miles away? 
+                        Well, good thing is that you're not alone. <strong>Register down below </strong>
+                        to say what's up to nearby Expats! 
+                    </p>
+                </TopContent>
+                <StyledForm validateOnBlur={false} validateOnChange={false}>
+                    <StyledField type='text' name='email' placeholder='Email' value={values.email}/>
+                        {touched.email && errors.email ? (
+                            <p>{errors.email}</p>
+                        ) : undefined}
+                    <StyledField type='text' name='username' placeholder='Username' />
+                        {touched.username && errors.username && (<p>{errors.username}</p>)}
+                    <StyledField type='text' name='password' placeholder='Password' />
+                        {touched.password && errors.password && (<p>{errors.password}</p>)}
+                    <StyledField type='text' name='confirm' placeholder='Confirm Password' />
+                    <label className='checkbox-container'>
+                    I agree to all terms and conditions
+                    <StyledField
+                        type='checkbox'
+                        name='terms'
+                        value={values.terms}
+                    />
+                    </label>
+                    <button type='submit' className='register-button'>Register</button>
+                </StyledForm>
+            </RightSection>
+        </RegisterMain>
     )
 }
 
@@ -73,5 +116,7 @@ const FormikRegisterMain = withFormik({
             .catch(err => console.log( err.response ))
     }
 })(RegisterMain)
+
+
 
 export default FormikRegisterMain;
