@@ -1,0 +1,17 @@
+.left-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    color: white;
+    font-size: .8rem;
+    text-align: center;
+    background-color: #3F0B37;
+
+    width: 170px;
+    height: 100vh;
+    margin-left: -70px;
+    padding-left: 70px;
+
+    border-radius: 20px;
+}
