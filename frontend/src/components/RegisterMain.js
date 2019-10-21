@@ -3,18 +3,20 @@ import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
+import bgImg from '../assets/friends-background.png'
 
 const RegisterMain = ({ values, errors, touched }) => {
 
     // Styled Components 
     const RegisterMain = styled.div`
-    border: 1px solid red;
     display: flex;
     justify-content: flex-end;
+    background: url(${bgImg});
+    background-size: cover;
+    background-position: center;
     `
 
     const RightSection = styled.div`
-    border: 1px solid blue;
     color: white;
     width: 40%;
     background: linear-gradient(137.08deg, #230A11 -1.96%, #5D0D5F 97.8%);
@@ -81,6 +83,12 @@ const RegisterMain = ({ values, errors, touched }) => {
     }
     `
 
+    const ErrorMessage = styled.div`
+        font-family: inherit;
+        color: #e5195f;
+        font-size: 12px;
+    `
+
 
     return (
         <RegisterMain>
@@ -96,16 +104,17 @@ const RegisterMain = ({ values, errors, touched }) => {
                         to say what's up to nearby Expats! 
                     </p>
                 </TopContent>
-                <StyledForm validateOnBlur={false} validateOnChange={false}>
+                <StyledForm>
                     <StyledField type='text' name='email' placeholder='Email' value={values.email}/>
                         {touched.email && errors.email ? (
-                            <p>{errors.email}</p>
+                            <ErrorMessage>{errors.email}</ErrorMessage>
                         ) : undefined}
                     <StyledField type='text' name='username' placeholder='Username' />
-                        {touched.username && errors.username && (<p>{errors.username}</p>)}
+                        {touched.username && errors.username && (<ErrorMessage>{errors.username}</ErrorMessage>)}
                     <StyledField type='text' name='password' placeholder='Password' />
-                        {touched.password && errors.password && (<p>{errors.password}</p>)}
+                        {touched.password && errors.password && (<ErrorMessage>{errors.password}</ErrorMessage>)}
                     <StyledField type='text' name='confirm' placeholder='Confirm Password' />
+                        {touched.confirm && errors.confirm && (<ErrorMessage>{errors.confirm}</ErrorMessage>)}
                     <label className='checkbox-container'>
                     I agree to all terms and conditions<span>   </span>
                     <StyledField
@@ -143,7 +152,10 @@ const FormikRegisterMain = withFormik({
             .min(6, 'Too short - at least 6 characters!')
             .max(20, 'Too Long - no more than 20 characters!')
             .required('Required'),
-        confirm: Yup.string(),
+        confirm: Yup.string()
+            .min(6, 'Too short - at least 6 characters!')
+            .max(20, 'Too Long - no more than 20 characters!')
+            .required('Required'),
     }),
     handleSubmit(values, {setStatus}) {
         axios
