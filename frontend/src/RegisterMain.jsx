@@ -7,7 +7,18 @@ import * as Yup from 'yup';
 const RegisterMain = ({ values, errors, touched }) => {
     return (
         <div className='register-main'>
-            <Form>
+            <div className='top-content'>
+                <h2>
+                    Become apart of a 25 million expat network, with members across the
+                    globe.
+                </h2>
+                <p>
+                    New Town? Constantly on the move? Friends are thousands of miles away? 
+                    Well, good thing is that you're not alone. <strong>Register down below </strong>
+                    to say what's up to nearby Expats! 
+                </p>
+            </div>
+            <Form validateOnBlur={false}>
                 <Field type='text' name='email' placeholder='Email' value={values.email}/>
                     {touched.email && errors.email ? (
                         <p>{errors.email}</p>
