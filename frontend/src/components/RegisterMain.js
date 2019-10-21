@@ -16,6 +16,13 @@ const RegisterMain = ({ values, errors, touched }) => {
     background-position: center;
     `
 
+    const H1 = styled.h1`
+    color: white;
+    margin-right: 30%;
+    text-align: center;
+    margin-top: 15%;
+    `
+
     const RightSection = styled.div`
     color: white;
     width: 40%;
@@ -92,6 +99,7 @@ const RegisterMain = ({ values, errors, touched }) => {
 
     return (
         <RegisterMain>
+            <H1>Expat<br />Journal</H1>
             <RightSection>
                 <TopContent>
                     <h2>
