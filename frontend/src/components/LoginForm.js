@@ -1,15 +1,17 @@
-/*eslint no-restricted-globals: ["warn", "status"]*/
-import React, { useState, useEffect } from 'react';
+/*eslint no-restricted-globals: ["off", "status"]*/
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { withFormik, Form, useField } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components/macro';
 import { useAuth } from '../context/AuthContext';
 
+import loginLocked from '../assets/login-locked.svg';
+
 const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background: ${props => props.theme.gradients.purple};
   height: 100vh;
@@ -88,12 +90,12 @@ export const FormButton = styled.button`
   display: block;
   height: 48px; /* make theme variable: inputHeight? */
   letter-spacing: 1px;
-  margin: 0 auto;
+  margin: calc(${props => props.theme.spacing.md} * 2) auto;
   padding: 2px;
   border: none;
   text-decoration: none;
   text-transform: uppercase;
-  width: 264px;
+  width: 100%;
   z-index: 2;
   span {
     align-items: center;
@@ -119,7 +121,7 @@ const CustomField = ({ label, ...props }) => {
 };
 
 const LoginForm = ({ values, status, handleChange }) => {
-  const [state, dispatch] = useAuth();
+  const [, dispatch] = useAuth();
   useEffect(() => {
     status &&
       dispatch({
@@ -128,11 +130,14 @@ const LoginForm = ({ values, status, handleChange }) => {
       });
     // Uncomment to log response data
     // console.log(state);
-    // console.log(status);
-  }, [status]);
+    console.log(status);
+  }, [status, dispatch]);
   return (
     <>
       <FormWrapper>
+        <header>
+          <img src={loginLocked} alt="Login locked" />
+        </header>
         <StyledForm>
           <CustomField
             name="email"
@@ -150,6 +155,8 @@ const LoginForm = ({ values, status, handleChange }) => {
             <span>Login</span>
           </FormButton>
         </StyledForm>
+        {/* Add forgot password component as nested route? */}
+        {/* Add social oauth component */}
       </FormWrapper>
     </>
   );
