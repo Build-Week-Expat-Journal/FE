@@ -46,6 +46,42 @@ const RegisterMain = ({ values, errors, touched }) => {
     `
 
 
+    const FormButton = styled.button`
+    position: relative;
+    background-image: linear-gradient(
+        90deg,
+        rgba(109, 88, 198, 1) 0%,
+        rgba(249, 119, 161, 1) 100%
+    );
+    border-radius: 12px;
+    box-sizing: border-box;
+    color: #111;
+    display: block;
+    height: 48px; /* make theme variable: inputHeight? */
+    letter-spacing: 1px;
+    margin: calc(${props => props.theme.spacing.md} * 2) auto;
+    padding: 2px;
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+    z-index: 2;
+    span {
+        align-items: center;
+        background: #e5e5e5;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        transition: background 0.5s ease;
+        width: 100%;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+    `
+
+
     return (
         <RegisterMain>
             <RightSection>
@@ -71,14 +107,14 @@ const RegisterMain = ({ values, errors, touched }) => {
                         {touched.password && errors.password && (<p>{errors.password}</p>)}
                     <StyledField type='text' name='confirm' placeholder='Confirm Password' />
                     <label className='checkbox-container'>
-                    I agree to all terms and conditions
+                    I agree to all terms and conditions<span>   </span>
                     <StyledField
                         type='checkbox'
                         name='terms'
                         value={values.terms}
                     />
                     </label>
-                    <button type='submit' className='register-button'>Register</button>
+                    <FormButton type='submit' className='register-button'><span>Register</span></FormButton>
                 </StyledForm>
             </RightSection>
         </RegisterMain>
