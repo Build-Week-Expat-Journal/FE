@@ -4,6 +4,7 @@ import styled from 'styled-components/macro';
 import media from './style/mq';
 
 import { useAuth } from './context/AuthContext';
+import Login from './routes/Login';
 
 const AppContainer = styled.div`
   font-family: ${props => props.theme.fontFamily.base};
@@ -23,7 +24,7 @@ function App() {
           {!state.isAuthenticated ? <Redirect to="/login" /> : <h1>Home</h1>}
         </Route>
         <Route exact path="/login">
-          <h1>Login</h1>
+          <Login />
         </Route>
       </Switch>
     </AppContainer>
