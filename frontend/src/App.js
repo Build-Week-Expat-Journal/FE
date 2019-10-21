@@ -5,6 +5,7 @@ import media from './style/mq';
 
 import { useAuth } from './context/AuthContext';
 import Login from './routes/Login';
+import RegisterMain from './components/RegisterMain'
 
 const AppContainer = styled.div`
   font-family: ${props => props.theme.fontFamily.base};
@@ -26,7 +27,9 @@ function App() {
         <Route exact path="/login">
           <Login />
         </Route>
+        <Route exact path='/register' component={RegisterMain} />
       </Switch>
+
     </AppContainer>
   );
 }
