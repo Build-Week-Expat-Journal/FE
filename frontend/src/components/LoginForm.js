@@ -7,15 +7,6 @@ import { useAuth } from '../context/AuthContext';
 
 import loginLocked from '../assets/login-locked.svg';
 
-const FormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  background: ${props => props.theme.gradients.purple};
-  height: 100vh;
-`;
-
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
@@ -132,30 +123,28 @@ const LoginForm = ({ values, status }) => {
   }, [history, location, from, status, values, isAuthenticated, handleLogin]);
   return (
     <>
-      <FormWrapper>
-        <header>
-          <img src={loginLocked} alt="Login locked" />
-        </header>
-        <StyledForm>
-          <CustomField
-            name="email"
-            type="email"
-            label="Email"
-            placeholder="Email"
-          />
-          <CustomField
-            name="password"
-            type="password"
-            label="Password"
-            placeholder="Password"
-          />
-          <FormButton ready={values.password} type="submit">
-            <span>Login</span>
-          </FormButton>
-        </StyledForm>
-        {/* Add forgot password component as nested route? */}
-        {/* Add social oauth component */}
-      </FormWrapper>
+      <header>
+        <img src={loginLocked} alt="Login locked" />
+      </header>
+      <StyledForm>
+        <CustomField
+          name="email"
+          type="email"
+          label="Email"
+          placeholder="Email"
+        />
+        <CustomField
+          name="password"
+          type="password"
+          label="Password"
+          placeholder="Password"
+        />
+        <FormButton ready={values.password} type="submit">
+          <span>Login</span>
+        </FormButton>
+      </StyledForm>
+      {/* Add forgot password component as nested route? */}
+      {/* Add social oauth component */}
     </>
   );
 };
