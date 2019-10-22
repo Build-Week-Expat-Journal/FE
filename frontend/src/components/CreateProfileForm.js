@@ -3,7 +3,6 @@ import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
-import bgImg from '../assets/friends-background.png'
 
 const CreateProfileForm = ({ values, errors, touched }) => {
 
@@ -88,7 +87,7 @@ const CreateProfileForm = ({ values, errors, touched }) => {
                     {touched.location && errors.location && (<ErrorMessage>{errors.location}</ErrorMessage>)}
                 <h2>Write a bio:</h2>
                 <StyledField component='textarea' type='text' name='bio' placeholder='No more than 200 character...' />
-                <FormButton type='submit' className='register-button'><span>Create Profile</span></FormButton>
+                <FormButton type='submit'><span>Create Profile</span></FormButton>
             </StyledForm>
         </>
     )
