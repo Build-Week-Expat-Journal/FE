@@ -33,7 +33,7 @@ function App() {
           <Login />
         </Route>
         <Route exact path='/register' component={RegisterMain} />
-        <PrivateRoute exact path="/create" component={CreateForm} />
+        <Route exact path="/create" component={CreateForm} />
         <PrivateRoute exact path="/update/:id" component={UpdateForm} />
       </Switch>
 
