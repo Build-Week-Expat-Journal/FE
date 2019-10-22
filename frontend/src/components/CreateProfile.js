@@ -138,21 +138,18 @@ const FormikCreateProfile = withFormik({
         }
     },
     validationSchema: Yup.object().shape({
-        email: Yup.string()
-            .email('Invalid email')
+        firstname: Yup.string()
             .required('Required'),
-        username: Yup.string()
-            .min(2, 'Too short - at least 3 characters!')
-            .max(20, 'Too Long - no more than 20 characters!')
+        lastname: Yup.string()
             .required('Required'),
-        password: Yup.string()
-            .min(6, 'Too short - at least 6 characters!')
-            .max(20, 'Too Long - no more than 20 characters!')
+        dob: Yup.string()
             .required('Required'),
-        confirm: Yup.string()
-            .min(6, 'Too short - at least 6 characters!')
-            .max(20, 'Too Long - no more than 20 characters!')
+        occupation: Yup.string()
             .required('Required'),
+        location: Yup.string()
+            .required('Required'),
+        bio: Yup.string()
+            .max(200, 'Too Long - no more than 200 characters!')
     }),
     handleSubmit(values, {setStatus}) {
         axios
