@@ -1,21 +1,11 @@
-/*eslint no-restricted-globals: ["off", "status"]*/
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { withFormik, Form, useField } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components/macro';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 import loginLocked from '../assets/login-locked.svg';
-
-const FormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  background: ${props => props.theme.gradients.purple};
-  height: 100vh;
-`;
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -99,12 +89,13 @@ export const FormButton = styled.button`
   z-index: 2;
   span {
     align-items: center;
-    background: #e5e5e5;
+    background: ${props => (props.ready ? 'none' : '#e5e5e5')};
+    color: ${props => (props.ready ? 'white' : 'inherit')};
     border-radius: 12px;
     display: flex;
     justify-content: center;
     height: 100%;
-    transition: background 0.5s ease;
+    transition: all 0.5s ease;
     width: 100%;
   }
 `;
@@ -120,55 +111,49 @@ const CustomField = ({ label, ...props }) => {
   );
 };
 
-const LoginForm = ({ values, status, handleChange }) => {
-  const [, dispatch] = useAuth();
+const LoginForm = ({ values, status }) => {
+  const { handleLogin, isAuthenticated } = useAuth();
+  const history = useHistory();
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: '/' } };
+
   useEffect(() => {
-    status &&
-      dispatch({
-        type: 'LOGIN',
-        payload: status,
-      });
-    // Uncomment to log response data
-    // console.log(state);
-    console.log(status);
-  }, [status, dispatch]);
+    if (status) handleLogin(values);
+    if (isAuthenticated) history.replace(from);
+  }, [history, location, from, status, values, isAuthenticated, handleLogin]);
   return (
     <>
-      <FormWrapper>
-        <header>
-          <img src={loginLocked} alt="Login locked" />
-        </header>
-        <StyledForm>
-          <CustomField
-            name="email"
-            type="email"
-            label="Email"
-            placeholder="Email"
-          />
-          <CustomField
-            name="password"
-            type="password"
-            label="Password"
-            placeholder="Password"
-          />
-          <FormButton type="submit">
-            <span>Login</span>
-          </FormButton>
-        </StyledForm>
-        {/* Add forgot password component as nested route? */}
-        {/* Add social oauth component */}
-      </FormWrapper>
+      <header>
+        <img src={loginLocked} alt="Login locked" />
+      </header>
+      <StyledForm>
+        <CustomField
+          name="email"
+          type="email"
+          label="Email"
+          placeholder="Email"
+        />
+        <CustomField
+          name="password"
+          type="password"
+          label="Password"
+          placeholder="Password"
+        />
+        <FormButton ready={values.password} type="submit">
+          <span>Login</span>
+        </FormButton>
+      </StyledForm>
+      {/* Add forgot password component as nested route? */}
+      {/* Add social oauth component */}
     </>
   );
 };
 
 export default withFormik({
-  mapPropsToValues(initialState) {
+  mapPropsToValues: ({ email, password }) => {
     return {
-      email: initialState.email || '',
-      password: initialState.password || '',
-      isSubmitting: initialState.isSubmitting || false,
-      errorMessage: initialState.errorMessage || null,
+      email: email || '',
+      password: password || '',
     };
   },
   validationSchema: Yup.object().shape({
@@ -179,20 +164,8 @@ export default withFormik({
       .min(6, 'Password must be at least 6 characters')
       .required(),
   }),
-  async handleSubmit(values, { setStatus, resetForm }) {
-    setStatus({ ...status, isSubmitting: true });
-    try {
-      // Mocking API post request
-      const response = await axios.post('https://reqres.in/api/login', values);
-      setStatus({ ...response.data, isSubmitting: false });
-      resetForm();
-    } catch (err) {
-      setStatus({
-        ...status,
-        isSubmitting: false,
-        errorMessage: err.message || err.statusText,
-      });
-      console.log(err.response);
-    }
+  handleSubmit: (values, { setStatus, resetForm }) => {
+    setStatus(values);
+    resetForm();
   },
 })(LoginForm);

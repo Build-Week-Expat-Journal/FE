@@ -1,21 +1,17 @@
-import React, { useEffect, useContext, useReducer } from 'react';
+import React, { useContext, useReducer } from 'react';
+import axios from 'axios';
 
 const AuthContext = React.createContext();
 
-const initialState = {
-  isAuthenticated: false,
-  token: null,
-};
-
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'LOGIN':
+    case 'LOGIN_SUCCESS':
       localStorage.setItem('token', JSON.stringify(action.payload.token));
       return {
         ...state,
-        isAuthenticated: true,
-        token: action.payload.token,
+        ...action.payload,
       };
+    case 'LOGIN_ERR':
     case 'LOGOUT':
       localStorage.clear();
       return {
@@ -29,21 +25,41 @@ const reducer = (state, action) => {
 };
 
 const AuthProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  useEffect(() => {
-    const token = JSON.parse(localStorage.getItem('token'));
+  const initialState = {
+    isAuthenticated: localStorage.getItem('token') ? true : false,
+    token: localStorage.getItem('token') || null,
+  };
 
-    if (token) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleLogin = async values => {
+    try {
+      // Mocking API post request
+      const response = await axios.post('https://reqres.in/api/login', values);
       dispatch({
-        type: 'LOGIN',
-        payload: {
-          token,
-        },
+        type: 'LOGIN_SUCCESS',
+        payload: response.data,
+      });
+    } catch (err) {
+      console.log(err.response);
+      dispatch({
+        type: 'LOGIN_ERR',
+        payload: err.response,
       });
     }
-  }, []);
+  };
+
+  const handleLogout = () => dispatch({ type: 'LOGOUT' });
+
   return (
-    <AuthContext.Provider value={[state, dispatch]}>
+    <AuthContext.Provider
+      value={{
+        token: state.token,
+        isAuthenticated: state.isAuthenticated,
+        handleLogin,
+        handleLogout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -51,4 +67,4 @@ const AuthProvider = ({ children }) => {
 
 const useAuth = () => useContext(AuthContext);
 
-export { AuthContext, AuthProvider, useAuth };
+export { AuthProvider, useAuth };
