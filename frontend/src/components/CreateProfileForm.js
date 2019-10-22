@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import styled from 'styled-components';
 import bgImg from '../assets/friends-background.png'
 
-const CreateProfile = ({ values, errors, touched }) => {
+const CreateProfileForm = ({ values, errors, touched }) => {
 
     // Styled Components 
     const RegisterMain = styled.div`
@@ -126,7 +126,7 @@ const CreateProfile = ({ values, errors, touched }) => {
     )
 }
 
-const FormikCreateProfile = withFormik({
+const FormikCreateProfileForm = withFormik({
     mapPropsToValues({ firstname, lastname, dob, occupation, location, bio }) {
         return {
             firstname: firstname || '',
@@ -157,8 +157,8 @@ const FormikCreateProfile = withFormik({
             .then(res => { console.log(res.data) })
             .catch(err => console.log( err.response ))
     }
-})(CreateProfile)
+})(CreateProfileForm)
 
 
 
-export default FormikCreateProfile;
+export default FormikCreateProfileForm;
