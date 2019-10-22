@@ -102,36 +102,24 @@ const CreateProfile = ({ values, errors, touched }) => {
             <H1>Expat<br />Journal</H1>
             <RightSection>
                 <TopContent>
-                    <h2>
-                        Become apart of a 25 million expat network, with members across the
-                        globe.
-                    </h2>
-                    <p>
-                        New Town? Constantly on the move? Friends are thousands of miles away? 
-                        Well, good thing is that you're not alone. <strong>Register down below </strong>
-                        to say what's up to nearby Expats! 
-                    </p>
+                    <h2>Tell us about yourself:</h2>
                 </TopContent>
                 <StyledForm>
-                    <StyledField type='text' name='email' placeholder='Email' value={values.email}/>
-                        {touched.email && errors.email ? (
-                            <ErrorMessage>{errors.email}</ErrorMessage>
+                    <StyledField type='text' name='firstname' placeholder='First Name' value={values.firstname}/>
+                        {touched.firstname && errors.firstname ? (
+                            <ErrorMessage>{errors.firstname}</ErrorMessage>
                         ) : undefined}
-                    <StyledField type='text' name='username' placeholder='Username' />
-                        {touched.username && errors.username && (<ErrorMessage>{errors.username}</ErrorMessage>)}
-                    <StyledField type='text' name='password' placeholder='Password' />
-                        {touched.password && errors.password && (<ErrorMessage>{errors.password}</ErrorMessage>)}
-                    <StyledField type='text' name='confirm' placeholder='Confirm Password' />
-                        {touched.confirm && errors.confirm && (<ErrorMessage>{errors.confirm}</ErrorMessage>)}
-                    <label className='checkbox-container'>
-                    I agree to all terms and conditions<span>   </span>
-                    <StyledField
-                        type='checkbox'
-                        name='terms'
-                        value={values.terms}
-                    />
-                    </label>
-                    <FormButton type='submit' className='register-button'><span>Register</span></FormButton>
+                    <StyledField type='text' name='lastname' placeholder='Last Name' />
+                        {touched.lastname && errors.lastname && (<ErrorMessage>{errors.lastname}</ErrorMessage>)}
+                    <StyledField type='text' name='dob' placeholder='Date of Birth (MM/DD/YYYY)' />
+                        {touched.dob && errors.dob && (<ErrorMessage>{errors.dob}</ErrorMessage>)}
+                    <StyledField type='text' name='occupation' placeholder='Occupation' />
+                        {touched.occupation && errors.occupation && (<ErrorMessage>{errors.occupation}</ErrorMessage>)}
+                    <StyledField type='text' name='location' placeholder='Location' />
+                        {touched.location && errors.location && (<ErrorMessage>{errors.location}</ErrorMessage>)}
+                    <h2>Write a bio:</h2>
+                    <StyledField component='textarea' type='text' name='bio' placeholder='No more than 200 character...' />
+                    <FormButton type='submit' className='register-button'><span>Create Profile</span></FormButton>
                 </StyledForm>
             </RightSection>
         </RegisterMain>
