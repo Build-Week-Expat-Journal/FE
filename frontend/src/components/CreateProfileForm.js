@@ -8,32 +8,7 @@ import bgImg from '../assets/friends-background.png'
 const CreateProfileForm = ({ values, errors, touched }) => {
 
     // Styled Components 
-    const RegisterMain = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    background: url(${bgImg});
-    background-size: cover;
-    background-position: center;
-    `
-
-    const H1 = styled.h1`
-    color: white;
-    margin-right: 30%;
-    text-align: center;
-    margin-top: 15%;
-    `
-
-    const RightSection = styled.div`
-    color: white;
-    width: 40%;
-    background: linear-gradient(137.08deg, #230A11 -1.96%, #5D0D5F 97.8%);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 30px;
-    `
+    
 
     const StyledForm = styled(Form)`
     display: flex;
@@ -41,9 +16,7 @@ const CreateProfileForm = ({ values, errors, touched }) => {
     width: 80%;
     `
 
-    const TopContent = styled.div`
-    margin-bottom: 10%;
-    `
+
 
     const StyledField = styled(Field)`
     color: white;
@@ -98,31 +71,26 @@ const CreateProfileForm = ({ values, errors, touched }) => {
 
 
     return (
-        <RegisterMain>
-            <H1>Expat<br />Journal</H1>
-            <RightSection>
-                <TopContent>
-                    <h2>Tell us about yourself:</h2>
-                </TopContent>
-                <StyledForm>
-                    <StyledField type='text' name='firstname' placeholder='First Name' value={values.firstname}/>
-                        {touched.firstname && errors.firstname ? (
-                            <ErrorMessage>{errors.firstname}</ErrorMessage>
-                        ) : undefined}
-                    <StyledField type='text' name='lastname' placeholder='Last Name' />
-                        {touched.lastname && errors.lastname && (<ErrorMessage>{errors.lastname}</ErrorMessage>)}
-                    <StyledField type='text' name='dob' placeholder='Date of Birth (MM/DD/YYYY)' />
-                        {touched.dob && errors.dob && (<ErrorMessage>{errors.dob}</ErrorMessage>)}
-                    <StyledField type='text' name='occupation' placeholder='Occupation' />
-                        {touched.occupation && errors.occupation && (<ErrorMessage>{errors.occupation}</ErrorMessage>)}
-                    <StyledField type='text' name='location' placeholder='Location' />
-                        {touched.location && errors.location && (<ErrorMessage>{errors.location}</ErrorMessage>)}
-                    <h2>Write a bio:</h2>
-                    <StyledField component='textarea' type='text' name='bio' placeholder='No more than 200 character...' />
-                    <FormButton type='submit' className='register-button'><span>Create Profile</span></FormButton>
-                </StyledForm>
-            </RightSection>
-        </RegisterMain>
+        <>
+            <h2>Tell us about yourself:</h2>
+            <StyledForm>
+                <StyledField type='text' name='firstname' placeholder='First Name' value={values.firstname}/>
+                    {touched.firstname && errors.firstname ? (
+                        <ErrorMessage>{errors.firstname}</ErrorMessage>
+                    ) : undefined}
+                <StyledField type='text' name='lastname' placeholder='Last Name' />
+                    {touched.lastname && errors.lastname && (<ErrorMessage>{errors.lastname}</ErrorMessage>)}
+                <StyledField type='text' name='dob' placeholder='Date of Birth (MM/DD/YYYY)' />
+                    {touched.dob && errors.dob && (<ErrorMessage>{errors.dob}</ErrorMessage>)}
+                <StyledField type='text' name='occupation' placeholder='Occupation' />
+                    {touched.occupation && errors.occupation && (<ErrorMessage>{errors.occupation}</ErrorMessage>)}
+                <StyledField type='text' name='location' placeholder='Location' />
+                    {touched.location && errors.location && (<ErrorMessage>{errors.location}</ErrorMessage>)}
+                <h2>Write a bio:</h2>
+                <StyledField component='textarea' type='text' name='bio' placeholder='No more than 200 character...' />
+                <FormButton type='submit' className='register-button'><span>Create Profile</span></FormButton>
+            </StyledForm>
+        </>
     )
 }
 
