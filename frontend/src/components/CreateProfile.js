@@ -127,13 +127,14 @@ const CreateProfile = ({ values, errors, touched }) => {
 }
 
 const FormikCreateProfile = withFormik({
-    mapPropsToValues({ email, username, password, confirm, terms }) {
+    mapPropsToValues({ firstname, lastname, dob, occupation, location, bio }) {
         return {
-            email: email || '',
-            username: username || '',
-            password: password || '',
-            confirm: confirm || '',
-            terms: terms || false // Currently unable to check and uncheck box
+            firstname: firstname || '',
+            lastname: lastname || '',
+            dob: dob || '',
+            occupation: occupation || '',
+            location: location || '',
+            bio: bio || ''
         }
     },
     validationSchema: Yup.object().shape({
