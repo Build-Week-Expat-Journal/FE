@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { withFormik, Form, useField } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components/macro';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 import loginLocked from '../assets/login-locked.svg';
@@ -123,11 +123,13 @@ const CustomField = ({ label, ...props }) => {
 const LoginForm = ({ values, status }) => {
   const { handleLogin, isAuthenticated } = useAuth();
   const history = useHistory();
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: '/' } };
 
   useEffect(() => {
     if (status) handleLogin(values);
-    if (isAuthenticated) history.push('/');
-  }, [history, status, values, isAuthenticated, handleLogin]);
+    if (isAuthenticated) history.replace(from);
+  }, [history, location, from, status, values, isAuthenticated, handleLogin]);
   return (
     <>
       <FormWrapper>
