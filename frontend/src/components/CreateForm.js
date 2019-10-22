@@ -6,6 +6,9 @@ export default function CreateForm() {
     return(
         <>
             <Navbar />
+            <div className="create-form">
+
+            </div>
         </>
     )
 }
