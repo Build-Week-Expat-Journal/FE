@@ -99,12 +99,13 @@ export const FormButton = styled.button`
   z-index: 2;
   span {
     align-items: center;
-    background: #e5e5e5;
+    background: ${props => (props.ready ? 'none' : '#e5e5e5')};
+    color: ${props => (props.ready ? 'white' : 'inherit')};
     border-radius: 12px;
     display: flex;
     justify-content: center;
     height: 100%;
-    transition: background 0.5s ease;
+    transition: all 0.5s ease;
     width: 100%;
   }
 `;
@@ -126,11 +127,13 @@ const LoginForm = ({ values, status, handleChange }) => {
     status &&
       dispatch({
         type: 'LOGIN',
-        payload: status,
+        payload: {
+          token: status.token,
+        },
       });
     // Uncomment to log response data
     // console.log(state);
-    console.log(status);
+    // console.log(status);
   }, [status, dispatch]);
   return (
     <>
@@ -151,7 +154,7 @@ const LoginForm = ({ values, status, handleChange }) => {
             label="Password"
             placeholder="Password"
           />
-          <FormButton type="submit">
+          <FormButton ready={values.password} type="submit">
             <span>Login</span>
           </FormButton>
         </StyledForm>
