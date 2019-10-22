@@ -80,7 +80,7 @@ const CreateProfileForm = ({ values, errors, touched }) => {
                     ) : undefined}
                 <StyledField type='text' name='lastname' placeholder='Last Name' />
                     {touched.lastname && errors.lastname && (<ErrorMessage>{errors.lastname}</ErrorMessage>)}
-                <StyledField type='text' name='dob' placeholder='Date of Birth (MM/DD/YYYY)' />
+                <StyledField type='date' name='dob' placeholder='Date of Birth (MM/DD/YYYY)' />
                     {touched.dob && errors.dob && (<ErrorMessage>{errors.dob}</ErrorMessage>)}
                 <StyledField type='text' name='occupation' placeholder='Occupation' />
                     {touched.occupation && errors.occupation && (<ErrorMessage>{errors.occupation}</ErrorMessage>)}
