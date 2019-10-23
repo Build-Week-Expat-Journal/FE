@@ -7,7 +7,7 @@ import { useAuth } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 
 import Login from './routes/Login';
-import RegisterMain from './components/RegisterMain';
+import Register from './routes/Register';
 import Home from './components/Home';
 import CreateForm from './components/CreateForm';
 import UpdateForm from './components/UpdateForm';
@@ -35,7 +35,7 @@ function App() {
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/register" component={RegisterMain} />
+        <Route exact path="/register" component={Register} />
         <Route exact path="/create" component={CreateForm} />
         <PrivateRoute exact path="/update/:id" component={UpdateForm} />
         <Route exact path="/createprofile" component={CreateProfile} />
