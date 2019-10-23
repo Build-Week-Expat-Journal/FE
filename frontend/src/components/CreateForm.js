@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Navbar from './Navbar';
-import { createPost } from '../actions/';
+import { createPost } from '../context/AuthContext';
 import profile from '../assets/profile.svg';
 import create from '../assets/create.svg';
 import bubbles from '../assets/bubbles.svg';
