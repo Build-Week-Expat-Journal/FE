@@ -11,6 +11,7 @@ import RegisterMain from './components/RegisterMain';
 import Home from './components/Home';
 import CreateForm from './components/CreateForm';
 import UpdateForm from './components/UpdateForm';
+import CreateProfile from './routes/CreateProfile';
 
 const AppContainer = styled.div`
   font-family: ${props => props.theme.fontFamily.base};
@@ -35,6 +36,7 @@ function App() {
         <Route exact path="/register" component={RegisterMain} />
         <Route exact path="/create" component={CreateForm} />
         <PrivateRoute exact path="/update/:id" component={UpdateForm} />
+        <Route exact path="/createprofile" component={CreateProfile} />
       </Switch>
     </AppContainer>
   );
