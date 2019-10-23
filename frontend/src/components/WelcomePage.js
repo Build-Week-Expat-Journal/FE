@@ -43,7 +43,7 @@ const LocationInfo = styled.div`
 margin: 30px 0 30px 0;
 `
 
-const Pill = styled.span`
+const Pill = styled.div`
   color: white;
   background: ${props => props.theme.gradients.purplePink};
   padding: 5%;
@@ -53,6 +53,7 @@ const Pill = styled.span`
   width: 50%;
   margin-bottom: 20px;
   text-align: center;
+  margin-top: 2%;
 `;
 
 const InterestInfo = styled.div`
@@ -96,7 +97,7 @@ const WelcomePage = (props) => {
                         </div>
                         <InterestInfo>
                             <h3>Interests:</h3>
-                            <Pill>Blockchain</Pill>
+                            <Pill>Chess</Pill>
                             <Pill>Business</Pill>
                         </InterestInfo>
                     </ProfileCard>
