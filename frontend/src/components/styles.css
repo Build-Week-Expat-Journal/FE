@@ -1,4 +1,89 @@
+/* NAVBAR STYLES */
 
+.left-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    color: white;
+    font-size: .8rem;
+    text-align: center;
+    background-color: #3F0B37;
+
+    width: 170px;
+    height: 100vh;
+    margin-left: -70px;
+    padding-left: 70px;
+
+    border-radius: 20px;
+}
+
+.icon {
+    transition: all .2s ease-in-out;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+/* HOME PAGE STYLES */
+
+.homepage {
+    display: flex;
+}
+
+.feed {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    padding: 30px;
+}
+
+.home-header {
+    font-size: 3rem;
+    color: #380B2D;
+}
+
+.feed-header {
+    font-size: 2rem;
+}
+
+
+.stories-and-checking {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 500px;
+    height: 100%;
+    padding: 30px;
+    right: 0px;
+}
+
+.stories-header, .checking-in-header {
+    font-size: 2rem;
+}
+
+.create-icon {
+    position: absolute;
+    width: 75px;
+    height: auto;
+    right: 50px;
+    bottom: 50px;
+}
+
+/* POST STYLES */
+.post {
+    background-color: white;
+
+    width: 85%;
+    margin: 30px 0;
+    padding: 5px 10px;
+
+    border-radius: 10px;
+    box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+}
 
 /* CREATE FORM STYLES */
 .create-form {

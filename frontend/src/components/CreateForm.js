@@ -3,7 +3,18 @@ import Navbar from './Navbar';
 import profile from '../assets/profile.svg';
 import './styles.css';
 
-export default function CreateForm() {
+export default function CreateForm(props) {
+
+
+    const handleChange = e => {
+
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        props.history.push('/');
+    }
+
 
     return(
         <>
@@ -12,7 +23,7 @@ export default function CreateForm() {
                 <span  className="header">
                 <img className="profilePic" src={profile} /><p className="create-title">What would you like to share?</p>
                 </span>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="inner">
                         <div className="create-as">
                             <p className="create">Create as:</p>

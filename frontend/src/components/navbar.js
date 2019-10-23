@@ -1,7 +1,7 @@
 import React from 'react';
 import profilePic from '../assets/profile-picture.svg';
 import { Link } from 'react-router-dom';
-import './navbar.css';
+import './styles.css';
 
 export default function Navbar() {
 
@@ -9,7 +9,7 @@ export default function Navbar() {
         <div className="left-header">
             <Link to='#'>
             <div className="icon">
-                    <img src={profilePic} alt="profile picture" />
+                    <img src={profilePic} alt="profile" />
             </div>
             </Link>
             <Link to='#'>

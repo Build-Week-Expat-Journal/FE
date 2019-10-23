@@ -27,9 +27,10 @@ function App() {
   return (
     <AppContainer>
       <Switch>
-        <Route exact path="/">
+        {/* <Route exact path="/">
           {!isAuthenticated ? <Redirect to="/login" /> : <Home />}
-        </Route>
+        </Route> */}
+        <Route exact path="/" component={Home} />
         <Route exact path="/login">
           <Login />
         </Route>
