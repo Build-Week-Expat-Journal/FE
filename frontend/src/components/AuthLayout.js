@@ -40,12 +40,24 @@ const Intro = styled.div`
     z-index: 1;
   }
 
-  h1 {
+  h1,
+  h2 {
     align-self: center;
     font-size: ${rem(144)};
     font-weight: ${props => props.theme.typography.fontWeight.regular};
     color: white;
+    text-align: center;
     z-index: 2;
+  }
+
+  h2 {
+    font-size: ${rem(80)};
+
+    span {
+      background: ${props => props.theme.gradients.purplePink};
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 `;
 
@@ -53,21 +65,25 @@ const Form = styled.div`
   grid-area: form;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   background: ${props => props.theme.gradients.purple};
   height: 100vh;
 `;
 
-const AuthLayout = ({ formAlign = 'right', children }) => {
+const AuthLayout = ({ formAlign = 'right', message, children }) => {
   return (
     <Wrapper formAlign={formAlign}>
       <Intro>
         <div className="filter"></div>
-        <h1>
-          Expat <br />
-          Journel
-        </h1>
+        {message ? (
+          <h2>{message()}</h2>
+        ) : (
+          <h1>
+            Expat <br />
+            Journel
+          </h1>
+        )}
       </Intro>
       <Form>{children}</Form>
     </Wrapper>
