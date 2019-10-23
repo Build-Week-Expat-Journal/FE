@@ -1,6 +1,7 @@
 /* NAVBAR STYLES */
 
 .left-header {
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -35,6 +36,7 @@
 .feed {
     display: flex;
     flex-direction: column;
+    margin-left: 100px;
     width: 50%;
     height: 100%;
     padding: 30px;
@@ -54,7 +56,7 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    width: 500px;
+    width: 600px;
     height: 100%;
     padding: 30px;
     right: 0px;
@@ -70,6 +72,25 @@
     height: auto;
     right: 50px;
     bottom: 50px;
+}
+
+.stories-row {
+    margin: 40px 0;
+}
+
+.story {
+    width: 135px;
+}
+
+.checking-row {
+    display: flex;
+    align-items: flex-end;
+    margin: 40px 0;
+}
+
+.checkin {
+    width: 200px;
+    margin: 0 20px;
 }
 
 /* POST STYLES */
@@ -92,7 +113,7 @@
 
     position: absolute;
     top: 10%;
-    right: 20%;
+    right: 15%;
     width: 450px;
     height: 550px;
     
@@ -179,4 +200,11 @@ textarea {
 
 .post-btn:hover {
     transform: scale(1.05);
+}
+
+.bubbles {
+    position: absolute;
+    width: 100px;
+    right: 0px;
+    bottom: -350px;
 }

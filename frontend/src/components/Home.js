@@ -5,6 +5,12 @@ import { getPosts } from '../actions';
 import Navbar from './Navbar.js';
 import Post from './Post.js';
 import create from '../assets/create.svg';
+import story1 from '../assets/story1.svg';
+import story2 from '../assets/story2.svg';
+import story3 from '../assets/story3.svg';
+import story4 from '../assets/story4.svg';
+import checking1 from '../assets/checking1.svg';
+import checking2 from '../assets/checking2.svg';
 import './styles.css';
 
 class Home extends React.Component {
@@ -33,12 +39,22 @@ class Home extends React.Component {
                 <div className="stories-and-checking">
                     <div className="stories">
                         <h4 className="stories-header">Stories</h4>
+                        <div className="stories-row">
+                            <img className="story hover-grow" src={story1} />
+                            <img className="story hover-grow" src={story2} />
+                            <img className="story hover-grow" src={story3} />
+                            <img className="story hover-grow" src={story4} />
+                        </div>
                     </div>
                     <div className="checking-in">
                         <h4 className="checking-in-header">Checking In</h4>
+                        <div className="checking-row">
+                            <img className="checkin hover-grow" src={checking1} />
+                            <img className="checkin hover-grow" src={checking2} />
+                        </div>
                     </div>
                 </div>
-                <Link to='/create'><img className="create-icon" src={create} /></Link>
+                <Link to='/create'><img className="create-icon hover-grow" src={create} /></Link>
             </div>
             </>
         )

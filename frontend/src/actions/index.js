@@ -40,6 +40,6 @@ export const createPost = post => dispatch => {
     })
     .catch(error => {
         console.log(error.message);
-        dispatch({ type: CREATE_POST_FAILURE, payload: error })
+        dispatch({ type: CREATE_POST_FAILURE, payload: error.message })
     })
 }

@@ -4,9 +4,8 @@ export default function Post(props) {
     return (
         <>
             <div className="post">
-                <h3>{props.title}</h3>
+                <h3>{props.contents}</h3>
                 <p>{props.created_at.slice(0,10)}</p>
-                <p>{props.contents}</p>
             </div>
         </>
     )

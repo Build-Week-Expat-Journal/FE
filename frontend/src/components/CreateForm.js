@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import Navbar from './Navbar';
+import { createPost } from '../actions/';
 import profile from '../assets/profile.svg';
+import create from '../assets/create.svg';
+import bubbles from '../assets/bubbles.svg';
 import './styles.css';
 
-export default function CreateForm(props) {
+function CreateForm(props) {
 
+    const [post, setPost] = useState({
+        contents: '',
+        title: '',
+        created_at: '2019-10-23T01:06:06.288Z',
+        updated_at: '2019-10-23T01:06:06.288Z',
+        user_id: 1,
+    });
 
     const handleChange = e => {
-
+        setPost({...post, [e.target.name]: e.target.value})
     }
 
     const handleSubmit = e => {
         e.preventDefault();
+        props.createPost({...post});
+        setPost({contents: ''});
         props.history.push('/');
     }
-
 
     return(
         <>
@@ -52,7 +64,7 @@ export default function CreateForm(props) {
                             </svg>
                             </div>
                         </div>
-                        <textarea placeholder="Write something about your post..." />
+                        <textarea name="contents" value={post.contents} placeholder="Write something about your post..." onChange={handleChange} />
                         <hr />
                         <div className="create-attach">
                             <div className="hover-grow">
@@ -98,7 +110,20 @@ export default function CreateForm(props) {
                         </button>
                     </div>
                 </form>
+                <img className="bubbles" src={bubbles} />
             </div>
+            <img className="create-icon hover-grow" src={create} />
         </>
     )
 }
+
+const mapStateToProps = state => ({
+    data: state.data,
+    isFetching: state.isFetching,
+    isPosting: state.isPosting,
+    isUpdating: state.isUpdating,
+    isDeleting: state.isDeleting,
+    error: state.error
+});
+
+export default connect(mapStateToProps, { createPost })(CreateForm);
