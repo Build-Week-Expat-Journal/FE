@@ -5,7 +5,14 @@ import Authlayout from '../components/AuthLayout';
 
 const CreateProfile = () => {
   return (
-    <Authlayout formAlign="left">
+    <Authlayout
+      message={() => (
+        <>
+          Create a <span>profile</span>
+        </>
+      )}
+      formAlign="left"
+    >
       <CreateProfileForm />
     </Authlayout>
   );
