@@ -16,7 +16,7 @@ const mockProfileData=[
 ]
 
 const ProfileCard = styled.div`
-height: 400px;
+height: 500px;
 margin-top: 0;
 background: ${props => props.theme.gradients.purplePink}
 border-radius: 30px;
@@ -41,6 +41,26 @@ padding: 10px;
 
 const LocationInfo = styled.div`
 margin: 30px 0 30px 0;
+`
+
+const Pill = styled.span`
+  color: white;
+  background: ${props => props.theme.gradients.purplePink};
+  padding: 5%;
+  border-radius: 30px;
+  cursor: pointer;
+  border: 3px solid white;
+  width: 50%;
+  margin-bottom: 20px;
+  text-align: center;
+`;
+
+const InterestInfo = styled.div`
+margin-top: 15%;
+display: flex;
+width: 100%;
+display: flex;
+flex-direction: column;
 `
 
 
@@ -74,6 +94,11 @@ const WelcomePage = (props) => {
                             <h3>Bio:</h3>
                             <p>{user.bio}</p>
                         </div>
+                        <InterestInfo>
+                            <h3>Interests:</h3>
+                            <Pill>Blockchain</Pill>
+                            <Pill>Business</Pill>
+                        </InterestInfo>
                     </ProfileCard>
                 )
             })}
