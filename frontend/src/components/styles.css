@@ -1,0 +1,210 @@
+/* NAVBAR STYLES */
+
+.left-header {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    color: white;
+    font-size: .8rem;
+    text-align: center;
+    background-color: #3F0B37;
+
+    width: 170px;
+    height: 100vh;
+    margin-left: -70px;
+    padding-left: 70px;
+
+    border-radius: 20px;
+}
+
+.icon {
+    transition: all .2s ease-in-out;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+/* HOME PAGE STYLES */
+
+.homepage {
+    display: flex;
+}
+
+.feed {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    width: 50%;
+    height: 100%;
+    padding: 30px;
+}
+
+.home-header {
+    font-size: 3rem;
+    color: #380B2D;
+}
+
+.feed-header {
+    font-size: 2rem;
+}
+
+
+.stories-and-checking {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 600px;
+    height: 100%;
+    padding: 30px;
+    right: 0px;
+}
+
+.stories-header, .checking-in-header {
+    font-size: 2rem;
+}
+
+.create-icon {
+    position: absolute;
+    width: 75px;
+    height: auto;
+    right: 50px;
+    bottom: 50px;
+}
+
+.stories-row {
+    margin: 40px 0;
+}
+
+.story {
+    width: 135px;
+}
+
+.checking-row {
+    display: flex;
+    align-items: flex-end;
+    margin: 40px 0;
+}
+
+.checkin {
+    width: 200px;
+    margin: 0 20px;
+}
+
+/* POST STYLES */
+.post {
+    background-color: white;
+
+    width: 85%;
+    margin: 30px 0;
+    padding: 5px 10px;
+
+    border-radius: 10px;
+    box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+/* CREATE FORM STYLES */
+.create-form {
+    background-image: linear-gradient(to bottom right, #230A11, #5D0D5F);
+    color: white;
+
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 450px;
+    height: 550px;
+    
+    border-radius: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.profilePic {
+    width: 50px;
+    height: 50px;
+    margin: 10px 30px 10px 0px;
+}
+
+.inner {
+    background-color: white;
+    color: black;
+
+    width: 95%;
+    height: 60%;
+    margin: 10px auto;
+
+    border-radius: 20px;;
+}
+
+.create {
+    margin: 0 12px;
+    font-size: 1.2rem;
+}
+
+.create-title {
+    font-size: 1.2rem;
+}
+
+.create-as {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px 0px;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    border: none;
+}
+
+.create-attach {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 0 10px;
+}
+
+.hover-grow {
+    transition: all .3s ease-in-out;
+}
+
+.hover-grow:hover {
+    transform: scale(1.05);
+}
+
+.post-btn-cntn {
+    display: flex;
+    justify-content: center;
+}
+
+.post-sub {
+    background: none;
+    border: none;
+}
+
+.post-btn {
+    margin: 25px auto;
+    transition: all .3s ease-in-out;
+}
+
+.post-btn:hover {
+    transform: scale(1.05);
+}
+
+.bubbles {
+    position: absolute;
+    width: 100px;
+    right: 0px;
+    bottom: -350px;
+}

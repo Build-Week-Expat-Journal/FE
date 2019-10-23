@@ -5,20 +5,30 @@ import { ThemeProvider } from 'styled-components';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+
 import GlobalStyles from './style/GlobalStyles';
 import theme from './style/theme';
 
 import { AuthProvider } from './context/AuthContext';
+import reducer from './reducers';
+
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <GlobalStyles />
-    <AuthProvider>
-      <Router>
-        <App />
-      </Router>
-    </AuthProvider>
-  </ThemeProvider>,
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <AuthProvider>
+        <Router>
+          <App />
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
+  </Provider>,
   document.getElementById('root'),
 );
 
