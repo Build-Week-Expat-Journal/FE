@@ -11,7 +11,7 @@ const Register = () => {
           Expat <span>Journal</span>
         </>
       )}
-      formAlign="left"
+      formAlign="right"
     >
       <RegisterMain />
     </Authlayout>
