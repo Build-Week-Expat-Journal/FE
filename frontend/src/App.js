@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute';
 import About from './routes/About';
 import Login from './routes/Login';
 import Register from './routes/Register';
+import Welcome from './routes/Welcome'
 import Home from './components/Home';
 import CreateForm from './components/CreateForm';
 import UpdateForm from './components/UpdateForm';
@@ -29,15 +30,12 @@ function App() {
     <AppContainer>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/about-us">
-          <About />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
+        <Route exact path="/about-us" component={About} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/create" component={CreateForm} />
-        <Route exact path="/update/" component={UpdateForm} />
+        <Route exact path='/welcome' component={Welcome} />
+        <PrivateRoute exact path="/update/:id" component={UpdateForm} />
         <Route exact path="/createprofile" component={CreateProfile} />
         <Route exact path="/interests">
           <UserInterests />

@@ -83,7 +83,7 @@ export const reducer = (state = initialState, action) => {
     case 'CREATE_POST_SUCCESS':
       return {
         ...state,
-        data: action.payload,
+        data: [action.payload, ...state.data],
         isFetching: false,
         isPosting: false,
         isUpdating: false,
@@ -246,11 +246,13 @@ export const getPosts = () => dispatch => {
 
 export const createPost = post => dispatch => {
   dispatch({ type: 'CREATE_POST_START' });
+  post = {...post, title: post.contents}
+  console.log(post)
   axiosWithAuth()
     .post(`/api/posts`, post)
     .then(response => {
       console.log(response);
-      dispatch({ type: 'CREATE_POST_SUCCESS', payload: response.data });
+      // dispatch({ type: 'CREATE_POST_SUCCESS', payload: response.data });
     })
     .catch(error => {
       console.log(error.message);
