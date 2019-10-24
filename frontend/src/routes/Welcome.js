@@ -8,7 +8,7 @@ const Welcome = () => {
     <Authlayout
       message={() => (
         <>
-          Welcome <span>John Smith!</span>
+          Welcome <span>Marty Smith!</span>
         </>
       )}
       formAlign="left"
