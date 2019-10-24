@@ -80,7 +80,7 @@ const RegisterMain = (props) => {
     email: '',
     username: '',
     password: '',
-    confirm_password: ''
+    confirmed_password: ''
   })
 
   const handleChanges = e => {
@@ -103,7 +103,7 @@ const RegisterMain = (props) => {
         <StyledField type="text" name="email" value={credentials.email} placeholder="email" onChange={handleChanges} />
         <StyledField type="text" name="username" value={credentials.username} placeholder="username" onChange={handleChanges} />
         <StyledField type="password" name="password" value={credentials.password} placeholder="password" onChange={handleChanges} />
-        <StyledField type="password" name="confirm_password" value={credentials.confirm_password} placeholder="confirm_password" onChange={handleChanges} />
+        <StyledField type="password" name="confirmed_password" value={credentials.confirmed_password} placeholder="confirmed_password" onChange={handleChanges} />
         <FormButton type="submit">Submit</FormButton>
       </StyledForm>
     </>

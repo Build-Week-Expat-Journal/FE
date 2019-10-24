@@ -1,13 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { deletePost } from '../context/AuthContext';
 
 const MyPost = (props) => {
 
+    const handleEdit = e => {
+
+    }
+
     const handleDelete = e => {
         e.preventDefault();
         console.log('delete clicked!', props.id)
-        deletePost(props.id);
+        props.deletePost(props.id);
+    //     axiosWithAuth()
+    //     .delete(`/api/posts/${props.id}`)
+    //     .then(response => {
+    //     console.log(response.data);
+    //      })
+    //     .catch(error => {
+    //     console.log(error);
+    // });
     }
 
     return (
