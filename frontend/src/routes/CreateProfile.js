@@ -8,7 +8,9 @@ const CreateProfile = () => {
     <Authlayout
       message={() => (
         <>
-          Create a <span>profile</span>
+          <h1>
+            Create a <span>profile</span>
+          </h1>
         </>
       )}
       formAlign="left"
