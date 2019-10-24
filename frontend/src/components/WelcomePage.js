@@ -70,22 +70,25 @@ const WelcomePage = (props) => {
 
     const [profileData, setProfileData] = useState([])
 
-    useEffect(() => {
-        setProfileData(mockProfileData)
-    }, [])
+    // useEffect(() => {
+    //     setProfileData(mockProfileData)
+    // }, [])
 
 
-    // useEffect(() => {    -- Temporarily using mock data
-    //     axios
-    //         .get(`https://expat-journal-lambda1.herokuapp.com/api/user_profile`)
-    //         .then(response => console.log(response))
-    // }, [])  
+    useEffect(() => {    
+        axios
+            .get(`https://expat-journal-lambda1.herokuapp.com/api/user_profile`)
+            .then(response => setProfileData(response.data))
+            .catch(error => {
+                console.log('Error Alert!!', error)
+            })
+    }, [])  
 
     return (
         <>
             {profileData.map((user, index) => {
                 return (
-                    <ProfileCard>
+                    <ProfileCard key={user.id}>
                         <h2>{`${user.first_name} ${user.last_name}`}</h2>
                         <LocationInfo>
                             <h3>Location:</h3>

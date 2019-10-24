@@ -135,7 +135,7 @@ const FormikRegisterMain = withFormik({
     handleSubmit(values, {setStatus}) {
         axios
             .post('https://reqres.in/api/users/', values)
-            .then(res => { console.log(res.data) })
+            .then(res => { console.log(res) })
             .catch(err => console.log( err.response ))
     }
 })(RegisterMain)
