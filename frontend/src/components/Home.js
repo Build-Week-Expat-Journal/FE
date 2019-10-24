@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getPosts } from '../actions';
+import { getPosts } from '../context/AuthContext';
 import Navbar from './Navbar.js';
 import Post from './Post.js';
 import create from '../assets/create.svg';
@@ -16,7 +16,6 @@ import './styles.css';
 class Home extends React.Component {
     componentDidMount() {
         this.props.getPosts();
-        console.log(this.props.data);
     }
 
     render() {
