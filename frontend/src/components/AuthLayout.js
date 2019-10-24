@@ -28,6 +28,8 @@ const Intro = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   height: 100vh;
+  padding: 1rem;
+  color: white;
 
   .filter {
     position: absolute;
@@ -40,18 +42,37 @@ const Intro = styled.div`
     z-index: 1;
   }
 
+  .message {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 80%;
+    padding: 0 2rem;
+    margin: 2rem 0;
+    z-index: 2;
+
+    p {
+      font-weight: 500;
+      font-size: 1.25rem;
+    }
+  }
+
   h1,
   h2 {
-    align-self: center;
-    font-size: ${rem(144)};
+    font-size: ${rem(80)};
     font-weight: ${props => props.theme.typography.fontWeight.regular};
     color: white;
-    text-align: center;
     z-index: 2;
+
+    span {
+      background: ${props => props.theme.gradients.purplePink};
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 
   h2 {
-    font-size: ${rem(80)};
+    font-size: ${rem(56)};
 
     span {
       background: ${props => props.theme.gradients.purplePink};
@@ -69,6 +90,13 @@ const Form = styled.div`
   align-items: center;
   background: ${props => props.theme.gradients.purple};
   height: 100vh;
+  padding: 1rem;
+
+  > * {
+    color: white;
+    width: 80%;
+    margin-bottom: 1rem;
+  }
 `;
 
 const AuthLayout = ({ formAlign = 'right', message, children }) => {
@@ -77,7 +105,7 @@ const AuthLayout = ({ formAlign = 'right', message, children }) => {
       <Intro>
         <div className="filter"></div>
         {message ? (
-          <h2>{message()}</h2>
+          <div className="message">{message()}</div>
         ) : (
           <h1>
             Expat <br />
