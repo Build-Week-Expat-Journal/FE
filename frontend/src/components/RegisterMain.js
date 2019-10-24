@@ -13,17 +13,7 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 80%;
-
-  .checkbox-container {
-    span {
-      margin-left: 0.5rem;
-      a {
-        color: #3f51b5;
-        text-decoration: underline;
-      }
-    }
-  }
-`;
+`
 
 const StyledField = styled.input`
   color: white;
