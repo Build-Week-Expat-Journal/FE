@@ -6,11 +6,10 @@ import Authlayout from '../../components/AuthLayout';
 const UserInterest = () => {
   return (
     <Authlayout
-      message={() => (
+      titleSize={32}
+      subTitle={() => (
         <>
-          <h1>
-            What are you <span>interested</span> in?
-          </h1>
+          What are you <span>interested</span> in?
         </>
       )}
       formAlign="left"
