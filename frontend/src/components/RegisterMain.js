@@ -83,8 +83,8 @@ const RegisterMain = (props) => {
     axios
     .post('https://expat-journal-lambda1.herokuapp.com/api/users/register', {...credentials})
     .then(res => {
-      console.log(res.data)
-      localStorage.setItem('token', JSON.stringify(res.data.token));
+      console.log(res.data);
+      localStorage.setItem('token', (res.data.token));
     })
     .catch(err => console.log(err.data))
 
@@ -97,7 +97,7 @@ const RegisterMain = (props) => {
         <StyledField type="text" name="username" value={credentials.username} placeholder="username" onChange={handleChanges} />
         <StyledField type="password" name="password" value={credentials.password} placeholder="password" onChange={handleChanges} />
         <StyledField type="password" name="confirm_password" value={credentials.confirm_password} placeholder="confirm_password" onChange={handleChanges} />
-        <Link to='/'><FormButton type="submit">Submit</FormButton></Link>
+        <FormButton type="submit">Submit</FormButton>
       </StyledForm>
     </>
   )
