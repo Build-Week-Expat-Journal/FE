@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import media from './style/mq';
 
@@ -37,7 +37,7 @@ function App() {
         </Route>
         <Route exact path="/register" component={Register} />
         <Route exact path="/create" component={CreateForm} />
-        <PrivateRoute exact path="/update/:id" component={UpdateForm} />
+        <Route exact path="/update/" component={UpdateForm} />
         <Route exact path="/createprofile" component={CreateProfile} />
         <Route exact path="/interests">
           <UserInterests />

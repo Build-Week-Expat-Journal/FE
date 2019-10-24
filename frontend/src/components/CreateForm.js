@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import { createPost } from '../context/AuthContext';
-import profile from '../assets/profile.svg';
+
 import create from '../assets/create.svg';
 import bubbles from '../assets/bubbles.svg';
 import './styles.css';
@@ -33,7 +33,7 @@ function CreateForm(props) {
             <Navbar />
             <div className="create-form">
                 <span  className="header">
-                <img className="profilePic" src={profile} /><p className="create-title">What would you like to share?</p>
+                <p className="create-title">What would you like to share?</p>
                 </span>
                 <form onSubmit={handleSubmit}>
                     <div className="inner">
