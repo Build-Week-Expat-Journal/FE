@@ -230,3 +230,23 @@ textarea {
     border: none;
     width: 35%;
 }
+
+.mine {
+    border: 1px solid #5D0D5F
+}
+
+.post-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-del {
+
+}
+
+.post-func {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    border-radius: 10px;;
+}

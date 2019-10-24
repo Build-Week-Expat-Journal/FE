@@ -21,7 +21,7 @@ function UpdateForm(props) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        props.createPost({...post});
+        props.updatePost({...post});
         setPost({contents: ''});
         props.history.push('/');
     }

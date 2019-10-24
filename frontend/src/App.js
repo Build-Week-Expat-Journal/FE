@@ -29,12 +29,8 @@ function App() {
     <AppContainer>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/about-us">
-          <About />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
+        <Route exact path="/about-us" component={About} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/create" component={CreateForm} />
         <Route exact path="/update/" component={UpdateForm} />

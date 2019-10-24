@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { withFormik, Form, useField } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components/macro';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 import loginLocked from '../assets/login-locked.svg';
@@ -139,9 +139,11 @@ const LoginForm = ({ values, status }) => {
           label="Password"
           placeholder="Password"
         />
-        <FormButton ready={values.password} type="submit">
+<Link to="/">
+  <FormButton ready={values.password} type="submit">
           <span>Login</span>
         </FormButton>
+        </Link>
       </StyledForm>
       {/* Add forgot password component as nested route? */}
       {/* Add social oauth component */}
@@ -156,15 +158,16 @@ export default withFormik({
       password: password || '',
     };
   },
-  validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email()
-      .required(),
-    password: Yup.string()
-      .min(6, 'Password must be at least 6 characters')
-      .required(),
-  }),
+  // validationSchema: Yup.object().shape({
+  //   email: Yup.string()
+  //     .email()
+  //     .required(),
+  //   password: Yup.string()
+  //     .min(6, 'Password must be at least 6 characters')
+  //     .required(),
+  // }),
   handleSubmit: (values, { setStatus, resetForm }) => {
+    console.log(values)
     setStatus(values);
     resetForm();
   },
