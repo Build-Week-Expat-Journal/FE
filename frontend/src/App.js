@@ -9,12 +9,12 @@ import PrivateRoute from './components/PrivateRoute';
 import About from './routes/About';
 import Login from './routes/Login';
 import Register from './routes/Register';
-import Welcome from './routes/Welcome'
+import Welcome from './routes/Welcome';
 import Home from './components/Home';
 import CreateForm from './components/CreateForm';
 import UpdateForm from './components/UpdateForm';
 import CreateProfile from './routes/CreateProfile';
-import UserInterests from './routes/Register/Interests';
+import UserInterests from './routes/Interests';
 
 const AppContainer = styled.div`
   font-family: ${props => props.theme.fontFamily.base};
@@ -35,7 +35,7 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/create" component={CreateForm} />
         <Route exact path="/update/:id" component={UpdateForm} />
-        <Route exact path='/welcome' component={Welcome} />
+        <Route exact path="/welcome" component={Welcome} />
         <Route exact path="/createprofile" component={CreateProfile} />
         <Route exact path="/interests">
           <UserInterests />
