@@ -1,22 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getPosts } from '../actions';
+import { getPosts } from '../context/AuthContext';
 import Navbar from './Navbar.js';
 import Post from './Post.js';
+import MyPost from './MyPost';
 import create from '../assets/create.svg';
-import story1 from '../assets/story1.svg';
-import story2 from '../assets/story2.svg';
-import story3 from '../assets/story3.svg';
-import story4 from '../assets/story4.svg';
-import checking1 from '../assets/checking1.svg';
-import checking2 from '../assets/checking2.svg';
+import story1 from '../images/story1.png';
+import story2 from '../images/story2.png';
+import story3 from '../images/story3.png';
+import story4 from '../images/story4.png';
+import checking1 from '../images/loc1.png';
+import checking2 from '../images/loc2.png';
 import './styles.css';
 
 class Home extends React.Component {
     componentDidMount() {
         this.props.getPosts();
-        console.log(this.props.data);
     }
 
     render() {
@@ -31,7 +31,10 @@ class Home extends React.Component {
                     {this.props.data &&
                         <div>
                             {this.props.data.map(post => (
-                                <Post key={post.id} title={post.title} contents={post.contents} user_id={post.user_id} created_at={post.created_at} updated_at={post.updated_at} />
+                                // post.user_id === this.props.user_id ?
+                                // <MyPost key={post.id} title={post.title} contents={post.contents} user_id={post.user_id} created_at={post.created_at} updated_at={post.updated_at} />
+                                // : 
+                                <MyPost key={post.id} id={post.id} title={post.title} contents={post.contents} user_id={post.user_id} created_at={post.created_at} updated_at={post.updated_at} />
                             ))}
                         </div>
                     }

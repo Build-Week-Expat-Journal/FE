@@ -6,9 +6,11 @@ import Authlayout from '../components/AuthLayout';
 const CreateProfile = () => {
   return (
     <Authlayout
-      message={() => (
+      titleSize={32}
+      subTitle={() => (
         <>
-          Create a <span>profile</span>
+          Create a <br />
+          <span>profile</span>
         </>
       )}
       formAlign="left"

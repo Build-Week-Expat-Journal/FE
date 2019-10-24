@@ -79,7 +79,8 @@
 }
 
 .story {
-    width: 135px;
+    width: 115px;
+    margin: 0 10px;
 }
 
 .checking-row {
@@ -207,4 +208,45 @@ textarea {
     width: 100px;
     right: 0px;
     bottom: -350px;
+}
+
+/* UPDATE PAGE STYLES */
+
+.update-form {
+    background-image: linear-gradient(to bottom right, #230A11, #5D0D5F);
+    color: white;
+
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    width: 450px;
+    height: 520px;
+    
+    border-radius: 20px;
+}
+
+.post-ec {
+    background: none;
+    border: none;
+    width: 35%;
+}
+
+.mine {
+    border: 1px solid #5D0D5F
+}
+
+.post-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-del {
+
+}
+
+.post-func {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    border-radius: 10px;;
 }

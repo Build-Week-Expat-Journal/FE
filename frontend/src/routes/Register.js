@@ -8,7 +8,8 @@ const Register = () => {
     <Authlayout
       message={() => (
         <>
-          Expat <span>Journal</span>
+          Become apart of a 25 million expat network, with members across the
+          globe.
         </>
       )}
       formAlign="right"

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import media from './style/mq';
 
 import { useAuth } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 
+import About from './routes/About';
 import Login from './routes/Login';
 import Register from './routes/Register';
 import Welcome from './routes/Welcome'
@@ -25,22 +26,15 @@ const AppContainer = styled.div`
 `;
 
 function App() {
-  const { isAuthenticated } = useAuth();
   return (
     <AppContainer>
       <Switch>
-        {/* <Route exact path="/">
-          {!isAuthenticated ? <Redirect to="/login" /> : <Home />}
-        </Route> */}
         <Route exact path="/" component={Home} />
-        <Route exact path="/login">
-          <Login />
-        </Route>
+        <Route exact path="/about-us" component={About} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/create" component={CreateForm} />
-        <Route exact path='/welcome'>
-          <Welcome />
-        </Route>
+        <Route exact path='/welcome' component={Welcome} />
         <PrivateRoute exact path="/update/:id" component={UpdateForm} />
         <Route exact path="/createprofile" component={CreateProfile} />
         <Route exact path="/interests">
