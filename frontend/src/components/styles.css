@@ -51,6 +51,11 @@
     font-size: 2rem;
 }
 
+.feed-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 
 .stories-and-checking {
     display: flex;

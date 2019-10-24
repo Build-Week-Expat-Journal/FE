@@ -80,7 +80,7 @@ const RegisterMain = (props) => {
     email: '',
     username: '',
     password: '',
-    confirmed_password: ''
+    confirm_password: ''
   })
 
   const handleChanges = e => {
@@ -92,7 +92,10 @@ const RegisterMain = (props) => {
     console.log(credentials);
     axios
     .post('https://expat-journal-lambda1.herokuapp.com/api/users/register', {...credentials})
-    .then(res => console.log(res.data))
+    .then(res => {
+      console.log(res.data)
+      localStorage.setItem('token', JSON.stringify(res.data.token));
+    })
     .catch(err => console.log(err.data))
 
   }
@@ -103,8 +106,8 @@ const RegisterMain = (props) => {
         <StyledField type="text" name="email" value={credentials.email} placeholder="email" onChange={handleChanges} />
         <StyledField type="text" name="username" value={credentials.username} placeholder="username" onChange={handleChanges} />
         <StyledField type="password" name="password" value={credentials.password} placeholder="password" onChange={handleChanges} />
-        <StyledField type="password" name="confirmed_password" value={credentials.confirmed_password} placeholder="confirmed_password" onChange={handleChanges} />
-        <FormButton type="submit">Submit</FormButton>
+        <StyledField type="password" name="confirm_password" value={credentials.confirm_password} placeholder="confirm_password" onChange={handleChanges} />
+        <Link to='/'><FormButton type="submit">Submit</FormButton></Link>
       </StyledForm>
     </>
   )

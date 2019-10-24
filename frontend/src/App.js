@@ -33,7 +33,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/create" component={CreateForm} />
-        <Route exact path="/update/" component={UpdateForm} />
+        <Route exact path="/update/:id" component={UpdateForm} />
         <Route exact path="/createprofile" component={CreateProfile} />
         <Route exact path="/interests">
           <UserInterests />
