@@ -1,4 +1,5 @@
 import React, { useContext, useReducer } from 'react';
+import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const AuthContext = React.createContext();
@@ -24,6 +25,7 @@ export const reducer = (state = initialState, action) => {
       };
     case 'LOGIN_SUCCESS':
       localStorage.setItem('token', JSON.stringify(action.payload.token));
+      state.isAuthenticated = true;
       return {
         ...state,
         ...action.payload,
@@ -177,7 +179,8 @@ const AuthProvider = ({ children }) => {
   const handleLogin = async values => {
     try {
       // Mocking API post request
-      const response = await axiosWithAuth().post('api/users/login', values);
+      // const response = await axiosWithAuth().post('api/users/login', values);
+      const response = await axios.post('https://reqres.in/api/login', values);
       console.log(response.data);
       dispatch({
         type: 'LOGIN_SUCCESS',
