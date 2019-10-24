@@ -3,17 +3,17 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 
-const mockProfileData=[
-    {
-        id: 1,
-        first_name: 'Marty',
-        last_name: 'Smith',
-        date_of_birth: '3/4/1992',
-        occupation: 'React Developer',
-        location: 'CA',
-        bio: 'React Developer from Cali'
-    }
-]
+// const mockProfileData=[  --> No longer in use; Fetching user_profile data from API
+//     {
+//         id: 1,
+//         first_name: 'Marty',
+//         last_name: 'Smith',
+//         date_of_birth: '3/4/1992',
+//         occupation: 'React Developer',
+//         location: 'CA',
+//         bio: 'React Developer from Cali'
+//     }
+// ]
 
 const ProfileCard = styled.div`
 height: 500px;
@@ -78,7 +78,7 @@ const WelcomePage = (props) => {
     useEffect(() => {    
         axios
             .get(`https://expat-journal-lambda1.herokuapp.com/api/user_profile`)
-            .then(response => setProfileData(response.data))
+            .then(response => setProfileData(response.data[0]))
             .catch(error => {
                 console.log('Error Alert!!', error)
             })
@@ -86,26 +86,22 @@ const WelcomePage = (props) => {
 
     return (
         <>
-            {profileData.map((user, index) => {
-                return (
-                    <ProfileCard key={user.id}>
-                        <h2>{`${user.first_name} ${user.last_name}`}</h2>
-                        <LocationInfo>
-                            <h3>Location:</h3>
-                            <p>{user.location}</p>
-                        </LocationInfo>
-                        <div className='bio-info'>
-                            <h3>Bio:</h3>
-                            <p>{user.bio}</p>
-                        </div>
-                        <InterestInfo>
-                            <h3>Interests:</h3>
-                            <Pill>Chess</Pill>
-                            <Pill>Business</Pill>
-                        </InterestInfo>
-                    </ProfileCard>
-                )
-            })}
+            <ProfileCard>
+                <h2>{`${profileData.first_name} ${profileData.last_name}`}</h2>
+                <LocationInfo>
+                    <h3>Location:</h3>
+                    <p>{profileData.location}</p>
+                </LocationInfo>
+                <div className='bio-info'>
+                    <h3>Bio:</h3>
+                    <p>{profileData.bio}</p>
+                </div>
+                <InterestInfo>
+                    <h3>Interests:</h3>
+                    <Pill>Chess</Pill>
+                    <Pill>Business</Pill>
+                </InterestInfo>
+            </ProfileCard>
             <Button>Home</Button>
         </>
     )
