@@ -51,15 +51,28 @@
     font-size: 2rem;
 }
 
+.feed-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 
 .stories-and-checking {
     display: flex;
     flex-direction: column;
-    position: absolute;
     width: 600px;
     height: 100%;
     padding: 30px;
-    right: 0px;
+}
+
+@media (max-width: 800px) {
+    .stories-and-checking {
+        display: none;
+    }
+
+    .feed {
+        width: 100%;
+    }
 }
 
 .stories-header, .checking-in-header {
@@ -79,7 +92,7 @@
 }
 
 .story {
-    width: 115px;
+    width: 100px;
     margin: 0 10px;
 }
 

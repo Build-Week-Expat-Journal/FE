@@ -145,7 +145,7 @@ export const reducer = (state = initialState, action) => {
     case 'DELETE_POST_SUCCESS':
       return {
         ...state,
-        data: action.payload,
+        data: state.data.filter(item=> !(item.id===action.payload.id)),
         isFetching: false,
         isPosting: false,
         isUpdating: false,
@@ -275,6 +275,7 @@ export const updatePost = post => dispatch => {
 };
 
 export const deletePost = id => dispatch => {
+  console.log("Delete dispatched")
   dispatch({ type: 'DELETE_POST_START' });
   axiosWithAuth()
     .delete(`/api/posts/${id}`)

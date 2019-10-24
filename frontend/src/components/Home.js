@@ -29,7 +29,7 @@ class Home extends React.Component {
                     <h4 className='feed-header'>Feed</h4>
                     {this.props.isFetching && <p className="fetching">Fetching...</p>}
                     {this.props.data &&
-                        <div>
+                        <div className="feed-reverse">
                             {this.props.data.map(post => (
                                 // post.user_id === this.props.user_id ?
                                 // <MyPost key={post.id} title={post.title} contents={post.contents} user_id={post.user_id} created_at={post.created_at} updated_at={post.updated_at} />
