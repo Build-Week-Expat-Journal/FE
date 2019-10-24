@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 import aboutHeader from '../assets/about-header.png';
+import feature1 from '../assets/features1.svg';
+import feature2 from '../assets/features2.svg';
+import feature3 from '../assets/features3.svg';
+import feature4 from '../assets/features4.svg';
 
 import MainNav from '../components/MainNav';
 
@@ -38,14 +42,14 @@ const Intro = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 4rem 2rem;
+  padding: 4rem 2rem 0;
 
   p {
     color: white;
     font-size: 1.25rem;
     text-align: center;
     max-width: 390px;
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
   }
 `;
 
@@ -54,6 +58,7 @@ const Bottom = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2rem;
 
   h2 {
     color: white;
@@ -63,7 +68,19 @@ const Bottom = styled.div`
     max-width: 390px;
     padding-bottom: 4rem;
   }
+  .features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 23%;
+      margin: 0 0.5rem;
+    }
+  }
 `;
+
+const features = [feature1, feature2, feature3, feature4];
 
 const About = () => (
   <Wrapper>
@@ -79,6 +96,11 @@ const About = () => (
     </Intro>
     <Bottom>
       <h2>Feature</h2>
+      <div className="features">
+        {features.map((img, i) => (
+          <img key={i} src={img} alt={`Feature ${i + 1}`} />
+        ))}
+      </div>
     </Bottom>
   </Wrapper>
 );
