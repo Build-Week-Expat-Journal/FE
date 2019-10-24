@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { withFormik, Form, useField } from 'formik';
 import * as Yup from 'yup';
+import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components/macro';
-import { useHistory, useLocation, Link } from 'react-router-dom';
+
 import { useAuth } from '../context/AuthContext';
 
 import loginLocked from '../assets/login-locked.svg';
@@ -112,15 +113,13 @@ const CustomField = ({ label, ...props }) => {
 };
 
 const LoginForm = ({ values, status }) => {
-  const { handleLogin, isAuthenticated } = useAuth();
   const history = useHistory();
   const location = useLocation();
-  const { from } = location.state || { from: { pathname: '/' } };
-
+  const { isAuthenticated } = useAuth();
   useEffect(() => {
-    if (status) handleLogin(values);
+    const { from } = location.state || { from: { pathname: '/' } };
     if (isAuthenticated) history.replace(from);
-  }, [history, location, from, status, values, isAuthenticated, handleLogin]);
+  }, [history, location, isAuthenticated]);
   return (
     <>
       <header>
@@ -139,11 +138,9 @@ const LoginForm = ({ values, status }) => {
           label="Password"
           placeholder="Password"
         />
-<Link to="/">
-  <FormButton ready={values.password} type="submit">
+        <FormButton ready={values.password} type="submit">
           <span>Login</span>
         </FormButton>
-        </Link>
       </StyledForm>
       {/* Add forgot password component as nested route? */}
       {/* Add social oauth component */}
@@ -158,17 +155,18 @@ export default withFormik({
       password: password || '',
     };
   },
-  // validationSchema: Yup.object().shape({
-  //   email: Yup.string()
-  //     .email()
-  //     .required(),
-  //   password: Yup.string()
-  //     .min(6, 'Password must be at least 6 characters')
-  //     .required(),
-  // }),
-  handleSubmit: (values, { setStatus, resetForm }) => {
-    console.log(values)
+  validationSchema: Yup.object().shape({
+    email: Yup.string()
+      .email()
+      .required(),
+    password: Yup.string()
+      .min(6, 'Password must be at least 6 characters')
+      .required(),
+  }),
+  handleSubmit: (values, { props, setStatus, resetForm }) => {
+    const { handleLogin } = props;
     setStatus(values);
+    if (values) handleLogin(values);
     resetForm();
   },
 })(LoginForm);
