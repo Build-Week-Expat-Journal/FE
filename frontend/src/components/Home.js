@@ -5,12 +5,12 @@ import { getPosts } from '../context/AuthContext';
 import Navbar from './Navbar.js';
 import Post from './Post.js';
 import create from '../assets/create.svg';
-import story1 from '../assets/story1.svg';
-import story2 from '../assets/story2.svg';
-import story3 from '../assets/story3.svg';
-import story4 from '../assets/story4.svg';
-import checking1 from '../assets/checking1.svg';
-import checking2 from '../assets/checking2.svg';
+import story1 from '../images/story1.png';
+import story2 from '../images/story2.png';
+import story3 from '../images/story3.png';
+import story4 from '../images/story4.png';
+import checking1 from '../images/loc1.png';
+import checking2 from '../images/loc2.png';
 import './styles.css';
 
 class Home extends React.Component {
