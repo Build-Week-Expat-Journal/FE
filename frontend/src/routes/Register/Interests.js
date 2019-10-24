@@ -8,10 +8,12 @@ const UserInterest = () => {
     <Authlayout
       message={() => (
         <>
-          What are you <span>interested</span> in?
+          <h1>
+            What are you <span>interested</span> in?
+          </h1>
         </>
       )}
-      formAlign="right"
+      formAlign="left"
     >
       <Interests />
     </Authlayout>

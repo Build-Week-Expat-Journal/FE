@@ -6,6 +6,7 @@ import media from './style/mq';
 import { useAuth } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 
+import About from './routes/About';
 import Login from './routes/Login';
 import Register from './routes/Register';
 import Home from './components/Home';
@@ -24,12 +25,16 @@ const AppContainer = styled.div`
 `;
 
 function App() {
-  const { isAuthenticated } = useAuth();
   return (
     <AppContainer>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/about-us">
+          <About />
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
         <Route exact path="/register" component={Register} />
         <Route exact path="/create" component={CreateForm} />
         <Route exact path="/update/" component={UpdateForm} />

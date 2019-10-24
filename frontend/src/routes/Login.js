@@ -5,7 +5,15 @@ import Authlayout from '../components/AuthLayout';
 
 const Login = () => {
   return (
-    <Authlayout formAlign="right">
+    <Authlayout
+      message={() => (
+        <>
+          <h2>Expat Journal</h2>
+          <br />
+        </>
+      )}
+      formAlign="right"
+    >
       <LoginForm />
     </Authlayout>
   );
