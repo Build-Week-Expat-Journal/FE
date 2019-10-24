@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { withFormik, Form, useField } from 'formik';
 import * as Yup from 'yup';
-import styled from 'styled-components/macro';
 import { useHistory, useLocation } from 'react-router-dom';
+import styled from 'styled-components/macro';
+
 import { useAuth } from '../context/AuthContext';
 
 import loginLocked from '../assets/login-locked.svg';
@@ -112,15 +113,13 @@ const CustomField = ({ label, ...props }) => {
 };
 
 const LoginForm = ({ values, status }) => {
-  const { handleLogin, isAuthenticated } = useAuth();
   const history = useHistory();
   const location = useLocation();
-  const { from } = location.state || { from: { pathname: '/' } };
-
+  const { isAuthenticated } = useAuth();
   useEffect(() => {
-    if (status) handleLogin(values);
+    const { from } = location.state || { from: { pathname: '/' } };
     if (isAuthenticated) history.replace(from);
-  }, [history, location, from, status, values, isAuthenticated, handleLogin]);
+  }, [history, location, isAuthenticated]);
   return (
     <>
       <header>
@@ -164,8 +163,10 @@ export default withFormik({
       .min(6, 'Password must be at least 6 characters')
       .required(),
   }),
-  handleSubmit: (values, { setStatus, resetForm }) => {
+  handleSubmit: (values, { props, setStatus, resetForm }) => {
+    const { handleLogin } = props;
     setStatus(values);
+    if (values) handleLogin(values);
     resetForm();
   },
 })(LoginForm);
