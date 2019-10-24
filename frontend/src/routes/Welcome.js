@@ -6,7 +6,8 @@ import Authlayout from '../components/AuthLayout';
 const Welcome = () => {
   return (
     <Authlayout
-      message={() => (
+      titleSize={32}
+      subTitle={() => (
         <>
           Welcome <span>Marty Smith!</span>
         </>
