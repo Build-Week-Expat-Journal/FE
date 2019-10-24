@@ -6,6 +6,7 @@ import media from './style/mq';
 import { useAuth } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 
+import About from './routes/About';
 import Login from './routes/Login';
 import Register from './routes/Register';
 import Home from './components/Home';
@@ -24,14 +25,13 @@ const AppContainer = styled.div`
 `;
 
 function App() {
-  const { isAuthenticated } = useAuth();
   return (
     <AppContainer>
       <Switch>
-        {/* <Route exact path="/">
-          {!isAuthenticated ? <Redirect to="/login" /> : <Home />}
-        </Route> */}
         <Route exact path="/" component={Home} />
+        <Route exact path="/about-us">
+          <About />
+        </Route>
         <Route exact path="/login">
           <Login />
         </Route>
