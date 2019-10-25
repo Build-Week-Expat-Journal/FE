@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { useAuth } from '../context/AuthContext';
 import RegisterMain from '../components/RegisterMain';
 import Authlayout from '../components/AuthLayout';
 
 const Register = () => {
+  const { handleRegister } = useAuth();
   return (
     <Authlayout
       message={() => (
@@ -14,7 +16,7 @@ const Register = () => {
       )}
       formAlign="right"
     >
-      <RegisterMain />
+      <RegisterMain handleRegister={handleRegister} />
     </Authlayout>
   );
 };
