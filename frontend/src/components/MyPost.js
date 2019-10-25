@@ -1,26 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { deletePost } from '../context/AuthContext';
 
 const MyPost = (props) => {
 
     const handleEdit = e => {
-
+        e.preventDefault();
+        console.log("edit clicked", props.id);
+        props.history.push(`/update/${props.id}`);
     }
 
     const handleDelete = e => {
         e.preventDefault();
         console.log('delete clicked!', props.id)
         props.deletePost(props.id);
-    //     axiosWithAuth()
-    //     .delete(`/api/posts/${props.id}`)
-    //     .then(response => {
-    //     console.log(response.data);
-    //      })
-    //     .catch(error => {
-    //     console.log(error);
-    // });
     }
 
     return (
@@ -29,7 +22,7 @@ const MyPost = (props) => {
                 <div className="post-head">
                 <h3>{props.title}</h3>
                     <div className="edit-del">
-                        <button className="post-func hover-grow">🖋</button>
+                        <button onClick={handleEdit} className="post-func hover-grow">🖋</button>
                         <button onClick={handleDelete} className="post-func hover-grow">✖</button>
                     </div>
                 </div>

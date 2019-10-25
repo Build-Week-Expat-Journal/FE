@@ -1,5 +1,6 @@
 import React, { useContext, useReducer } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { AST_Conditional } from 'terser';
 
 const AuthContext = React.createContext();
 
@@ -113,7 +114,7 @@ export const reducer = (state = initialState, action) => {
     case 'UPDATE_POST_SUCCESS':
       return {
         ...state,
-        data: action.payload,
+        data: state.data.map(post => {if (post.id === action.payload.id) { return action.payload; } else { return post }}),
         isFetching: false,
         isPosting: false,
         isUpdating: false,

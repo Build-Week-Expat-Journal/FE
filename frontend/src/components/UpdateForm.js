@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import { updatePost } from '../context/AuthContext';
@@ -15,6 +15,14 @@ function UpdateForm(props) {
         user_id: 1,
     });
 
+    useEffect(() => {
+        const postToUpdate = props.data.filter(post => {
+          return post.id === props.match.params.id
+        })
+        postToUpdate && setPost(postToUpdate)
+      }, [props.match.params.id])
+    
+
     const handleChange = e => {
         setPost({...post, [e.target.name]: e.target.value})
     }
@@ -22,7 +30,12 @@ function UpdateForm(props) {
     const handleSubmit = e => {
         e.preventDefault();
         props.updatePost({...post});
-        setPost({contents: ''});
+        setPost({
+            contents: '',
+            title: '',
+            updated_at: '2019-10-23T01:06:06.288Z',
+            user_id: 1,
+        });
         props.history.push('/');
     }
 
