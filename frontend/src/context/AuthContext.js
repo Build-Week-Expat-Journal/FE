@@ -1,5 +1,4 @@
 import React, { useContext, useReducer } from 'react';
-import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { AST_Conditional } from 'terser';
 
@@ -180,8 +179,8 @@ const AuthProvider = ({ children }) => {
   const handleLogin = async values => {
     try {
       // Mocking API post request
-      // const response = await axiosWithAuth().post('api/users/login', values);
-      const response = await axios.post('https://reqres.in/api/login', values);
+      const response = await axiosWithAuth().post('api/users/login', values);
+      // const response = await axios.post('https://reqres.in/api/login', values);
       console.log(response.data);
       dispatch({
         type: 'LOGIN_SUCCESS',
