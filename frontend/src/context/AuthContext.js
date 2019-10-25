@@ -19,6 +19,8 @@ export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'REGISTER_SUCCESS':
       localStorage.setItem('token', JSON.stringify(action.payload.token));
+      state.registered = true;
+      state.isAuthenticated = state.registered;
       return {
         ...state,
         ...action.payload,
@@ -145,7 +147,7 @@ export const reducer = (state = initialState, action) => {
     case 'DELETE_POST_SUCCESS':
       return {
         ...state,
-        data: state.data.filter(item=> !(item.id===action.payload.id)),
+        data: state.data.filter(item => !(item.id === action.payload.id)),
         isFetching: false,
         isPosting: false,
         isUpdating: false,
@@ -171,6 +173,7 @@ export const reducer = (state = initialState, action) => {
 const AuthProvider = ({ children }) => {
   const initialState = {
     isAuthenticated: localStorage.getItem('token') ? true : false,
+    registered: false,
     token: localStorage.getItem('token') || null,
   };
 
@@ -198,7 +201,12 @@ const AuthProvider = ({ children }) => {
   const handleRegister = async values => {
     try {
       // Mocking API post request
-      const response = await axiosWithAuth().post('api/users/register', values);
+      const response = await axiosWithAuth().post('api/users/register', {
+        email: values.email,
+        username: values.username,
+        password: values.password,
+        confirmed_password: values.confirmed_password,
+      });
       console.log(response.data);
       dispatch({
         type: 'REGISTER_SUCCESS',
@@ -220,6 +228,7 @@ const AuthProvider = ({ children }) => {
       value={{
         token: state.token,
         isAuthenticated: state.isAuthenticated,
+        registered: state.registered,
         handleLogin,
         handleRegister,
         handleLogout,
@@ -246,8 +255,8 @@ export const getPosts = () => dispatch => {
 
 export const createPost = post => dispatch => {
   dispatch({ type: 'CREATE_POST_START' });
-  post = {...post, title: post.contents}
-  console.log(post)
+  post = { ...post, title: post.contents };
+  console.log(post);
   axiosWithAuth()
     .post(`/api/posts`, post)
     .then(response => {
@@ -275,7 +284,7 @@ export const updatePost = post => dispatch => {
 };
 
 export const deletePost = id => dispatch => {
-  console.log("Delete dispatched")
+  console.log('Delete dispatched');
   dispatch({ type: 'DELETE_POST_START' });
   axiosWithAuth()
     .delete(`/api/posts/${id}`)
