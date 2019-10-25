@@ -11,6 +11,7 @@ import Login from './routes/Login';
 import Register from './routes/Register';
 import Welcome from './routes/Welcome';
 import Home from './components/Home';
+import StaticHome from './components/StaticHome';
 import CreateForm from './components/CreateForm';
 import UpdateForm from './components/UpdateForm';
 import CreateProfile from './routes/CreateProfile';
@@ -29,7 +30,7 @@ function App() {
   return (
     <AppContainer>
       <Switch>
-        <Route exact path="/" render = { props => {return <Home {...props} /> }} />
+        <Route exact path="/" render = { props => {return <StaticHome {...props} /> }} />
         <Route exact path="/about-us" component={About} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />

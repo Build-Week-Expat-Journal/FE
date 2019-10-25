@@ -4,8 +4,11 @@ export default function Post(props) {
     return (
         <>
             <div className="post">
-                <h3>{props.contents}</h3>
-                <p>{props.created_at.slice(0,10)}</p>
+                <div className="post-head">
+                <h3>{props.title}</h3>
+                </div>
+                <p>{props.contents}</p>
+                <div className='by-user'>By {props.user}</div>
             </div>
         </>
     )
