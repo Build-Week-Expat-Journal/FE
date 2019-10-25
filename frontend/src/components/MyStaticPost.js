@@ -12,8 +12,7 @@ const MyPost = (props) => {
 
     const handleDelete = e => {
         e.preventDefault();
-        console.log('delete clicked!', props.id)
-        props.deletePost(props.id);
+        props.deletePost()
     }
 
     return (

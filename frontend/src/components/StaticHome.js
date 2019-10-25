@@ -4,6 +4,8 @@ import Navbar from './Navbar.js';
 import Post from './Post.js';
 import MyPost from './MyPost';
 import StaticCreate from './StaticCreate';
+import StaticUpdate from './StaticUpdate';
+import MyStaticPost from './MyStaticPost';
 import create from '../assets/create.svg';
 import story1 from '../images/story1.png';
 import story2 from '../images/story2.png';
@@ -75,6 +77,8 @@ export default function StaticHome (props) {
         <>
         <div className="homepage">
             <Route exact path="/staticcreate" render = { props => {return <StaticCreate {...props} addPost={addPost} /> }} />
+            <Route exact path="/staticupdate" render = { props => {return <StaticUpdate {...props} editPost={editPost} /> }} />
+            <Route exact path="/mystaticpost" render = { props => {return <MyStaticPost {...props} editPost={editPost} deletePost={deletePost} /> }} />
             <Navbar />
             <div className="feed">
                 <h2 className='home-header'>Home</h2>
@@ -83,7 +87,7 @@ export default function StaticHome (props) {
                     <div className="feed-reverse">
                         {staticData.map(post => (
                             post.user_id === staticID ?
-                            <MyPost key={post.id} id={post.id} title={post.title} contents={post.contents} user_id={post.user_id} user={post.user} created_at={post.created_at} updated_at={post.updated_at} editPost={editPost} deletePost={deletePost} />
+                            <MyStaticPost key={post.id} id={post.id} title={post.title} contents={post.contents} user_id={post.user_id} user={post.user} created_at={post.created_at} updated_at={post.updated_at} editPost={editPost} deletePost={deletePost} />
                             : 
                             <Post key={post.id} id={post.id} title={post.title} contents={post.contents} user_id={post.user_id} user={post.user} created_at={post.created_at} updated_at={post.updated_at} />
                         ))}
