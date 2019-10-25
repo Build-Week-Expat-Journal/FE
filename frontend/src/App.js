@@ -29,17 +29,15 @@ function App() {
   return (
     <AppContainer>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" render = { props => {return <Home {...props} /> }} />
         <Route exact path="/about-us" component={About} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/create" component={CreateForm} />
-        <Route exact path="/update/:id" component={UpdateForm} />
-        <Route exact path="/welcome" component={Welcome} />
-        <Route exact path="/createprofile" component={CreateProfile} />
-        <Route exact path="/interests">
-          <UserInterests />
-        </Route>
+        <Route exact path="/update/:id" render = { props => {return <UpdateForm {...props} /> }} />
+        <PrivateRoute exact path='/welcome' component={Welcome} />
+        <PrivateRoute exact path="/createprofile" component={CreateProfile} />
+        <Route exact path="/interests" component={UserInterests} />
       </Switch>
     </AppContainer>
   );
