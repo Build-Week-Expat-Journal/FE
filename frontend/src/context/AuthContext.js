@@ -44,9 +44,6 @@ export const reducer = (state = initialState, action) => {
         ...state,
         data: [],
         isFetching: true,
-        isPosting: false,
-        isUpdating: false,
-        isDeleting: false,
         error: '',
       };
     case 'FETCH_POSTS_SUCCESS':
@@ -54,9 +51,6 @@ export const reducer = (state = initialState, action) => {
         ...state,
         data: action.payload,
         isFetching: false,
-        isPosting: false,
-        isUpdating: false,
-        isDeleting: false,
         error: '',
       };
     case 'FETCH_POSTS_FAILURE':
@@ -64,9 +58,6 @@ export const reducer = (state = initialState, action) => {
         ...state,
         data: [],
         isFetching: false,
-        isPosting: false,
-        isUpdating: false,
-        isDeleting: false,
         error: action.payload,
       };
     // create post
@@ -74,30 +65,21 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         data: [],
-        isFetching: false,
         isPosting: true,
-        isUpdating: false,
-        isDeleting: false,
         error: '',
       };
     case 'CREATE_POST_SUCCESS':
       return {
         ...state,
         data: [action.payload, ...state.data],
-        isFetching: false,
         isPosting: false,
-        isUpdating: false,
-        isDeleting: false,
         error: '',
       };
     case 'CREATE_POST_FAILURE':
       return {
         ...state,
         data: [],
-        isFetching: false,
         isPosting: false,
-        isUpdating: false,
-        isDeleting: false,
         error: action.payload,
       };
     // update post
@@ -105,30 +87,21 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         data: [],
-        isFetching: false,
-        isPosting: false,
         isUpdating: true,
-        isDeleting: false,
         error: '',
       };
     case 'UPDATE_POST_SUCCESS':
       return {
         ...state,
         data: state.data.map(post => {if (post.id === action.payload.id) { return action.payload; } else { return post }}),
-        isFetching: false,
-        isPosting: false,
         isUpdating: false,
-        isDeleting: false,
         error: '',
       };
     case 'UPDATE_POST_FAILURE':
       return {
         ...state,
         data: [],
-        isFetching: false,
-        isPosting: false,
         isUpdating: false,
-        isDeleting: false,
         error: action.payload,
       };
     // delete post
@@ -136,9 +109,6 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         data: [],
-        isFetching: false,
-        isPosting: false,
-        isUpdating: false,
         isDeleting: true,
         error: '',
       };
@@ -146,9 +116,6 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         data: state.data.filter(item=> !(item.id===action.payload.id)),
-        isFetching: false,
-        isPosting: false,
-        isUpdating: false,
         isDeleting: false,
         error: '',
       };
@@ -156,9 +123,6 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         data: [],
-        isFetching: false,
-        isPosting: false,
-        isUpdating: false,
         isDeleting: false,
         error: action.payload,
       };
@@ -288,6 +252,7 @@ export const deletePost = id => dispatch => {
       dispatch({ type: 'DELETE_POST_FAILURE', payload: error.message });
     });
 };
+
 
 const useAuth = () => useContext(AuthContext);
 

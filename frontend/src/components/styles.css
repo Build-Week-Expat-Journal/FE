@@ -59,7 +59,9 @@
 
 .stories-and-checking {
     display: flex;
+    position: fixed;
     flex-direction: column;
+    left: 55%;
     width: 600px;
     height: 100%;
     padding: 30px;
@@ -80,7 +82,7 @@
 }
 
 .create-icon {
-    position: absolute;
+    position: fixed;
     width: 75px;
     height: auto;
     right: 50px;
@@ -113,9 +115,9 @@
 
     width: 85%;
     margin: 30px 0;
-    padding: 5px 10px;
+    padding: 10px;
 
-    border-radius: 10px;
+    border-radius: 10px 10px 5px;
     box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
 }
@@ -258,8 +260,20 @@ textarea {
 }
 
 .post-func {
+    background-image: linear-gradient(to bottom right, #f977a1, #5D0D5F);
+    color: white;
     width: 30px;
     height: 30px;
-    margin: 0 5px;
+    margin: 0 2px;
     border-radius: 10px;;
+}
+
+.by-user {
+    background-image: linear-gradient(to bottom right, #f977a1, #5D0D5F);;
+    color: white;
+    opacity: .75;
+    width: 200px;
+    margin: 10px;
+    padding: 0 10px;
+    border-radius: 10px;
 }
